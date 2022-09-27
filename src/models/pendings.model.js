@@ -2,35 +2,15 @@ const { DataTypes } = require('sequelize')
 
 const { db } = require('../utils/database')
 
-const Tasks = db.define('tasks', {
+const Tasks = db.define('pendings', {
     id: {
         primaryKey: true,
         type: DataTypes.UUID,
         allowNull: false
     },
-    userId: {
-        allowNull: false,
-        type: DataTypes.UUID
-    },
     description: {
         allowNull: false,
         type: DataTypes.STRING
-    },
-    creatorId: {
-        allowNull: false,
-        type: DataTypes.UUID
-    },
-    roomId: {
-        allowNull: false,
-        type: DataTypes.UUID
-    },
-    executionDate: {
-        allowNull: false,
-        type: DataTypes.DATEONLY,
-        defaultValue:"2000/01/01"//año/mes/dia
-    },
-    pendingsId:{
-        type:DataTypes.UUID
     },
     isfinished: {
         type: DataTypes.BOOLEAN,

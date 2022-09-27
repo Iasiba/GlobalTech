@@ -9,6 +9,7 @@ const rolesRouter = require("./Roles/roles.router").router
 const userRouter = require("./users/users.router").router
 const userImageRouter = require("./userImages/userImages.router").router
 const roomRouter = require ('./rooms/rooms.router').router
+const taskRouter = require("./tasks/tasks.router").router
 const defaultData = require ("./utils/defaultData")
 
 const initModels = require('./models/initModels')
@@ -58,6 +59,7 @@ app.use("/api/v1/roles",rolesRouter)
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/userImages",userImageRouter)
 app.use("/api/v1/rooms",roomRouter)
+app.use("/api/v1/tasks",taskRouter)
 
 
 
