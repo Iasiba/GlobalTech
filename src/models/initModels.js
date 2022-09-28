@@ -5,15 +5,14 @@ const Tasks = require('./tasks.model')
 const TaskImages = require('./tasksImages.models')
 const Rooms = require('./rooms.model')
 const Pendings = require('./pendings.model')
-const Materials = require('./material.models')
+const Materials = require('./materials.model')
+const Users_images = require('./users.images')
+const Contacts = require('./contacts.model')
+const Creators = require('./creators.model')
+const Inventory = require('./inventories.model')
 
 //const Reservations = require('./reservations.model')
 //const Acomodations = require('./acomodations.model')
-
-const Users_images = require('./users.images')
-const Contacts = require('./contact.models')
-const Creators = require('./creators.model')
-
 //const Acomodation_images = require('./acomodations.images.models')
 //const Places = require('./places.model')
 
@@ -61,6 +60,9 @@ const initModels = () => {
     
     Materials.belongsTo(Projects)
     Projects.hasMany(Materials)
+
+    Materials.belongsTo(Inventory)
+    Inventory.hasMany(Materials)
 /*
     Users.belongsTo(Reservations);/// estas relaciones estan mal pero asi me funciona todas las funciones 
     Reservations.hasMany(Users);  /// reseervacion edit admin y host si funcionan

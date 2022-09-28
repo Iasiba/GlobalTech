@@ -8,14 +8,17 @@ const authRouter = require("./auth/auth.router").router
 const rolesRouter = require("./Roles/roles.router").router
 const userRouter = require("./users/users.router").router
 const userImageRouter = require("./userImages/userImages.router").router
-const roomRouter = require ('./rooms/rooms.router').router
+const roomRouter = require('./rooms/rooms.router').router
 const taskRouter = require("./tasks/tasks.router").router
-const defaultData = require ("./utils/defaultData")
+const projectRouter = require("./projects/projects.router").router
+const taskImagesRouter = require("./taskImages/taskImages.router").router
+const defaultData = require("./utils/defaultData")
 
 const initModels = require('./models/initModels')
 //* Configuraciones iniciales
 
-const {db} = require('./utils/database')
+const { db } = require('./utils/database')
+
 
 //* Configuraciones iniciales
 const app = express();
@@ -26,21 +29,21 @@ db.authenticate()
   .then(() => console.log('Database Authenticated'))
   .catch(err => console.log(err))
 
-  if(process.env.NODE_ENV === 'production'){
-    db.sync()
+if (process.env.NODE_ENV === 'production') {
+  db.sync()
     .then(() => {
       console.log('Database synced')
       defaultData()
     })
     .catch(err => console.log(err))
-  } else{
-    db.sync({force:true})
+} else {
+  db.sync({ force: true })
     .then(() => {
       console.log('Database synced')
       defaultData()
     })
     .catch(err => console.log(err))
-  }
+}
 /*
 db.sync()
   .then(() => console.log('Database synced'))
@@ -55,11 +58,13 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "All ok!" });
 });
 app.use("/api/v1/auth", authRouter)
-app.use("/api/v1/roles",rolesRouter)
+app.use("/api/v1/roles", rolesRouter)
 app.use("/api/v1/users", userRouter)
-app.use("/api/v1/userImages",userImageRouter)
-app.use("/api/v1/rooms",roomRouter)
-app.use("/api/v1/tasks",taskRouter)
+app.use("/api/v1/userImages", userImageRouter)
+app.use("/api/v1/rooms", roomRouter)
+app.use("/api/v1/tasks", taskRouter)
+app.use("/api/v1/projects", projectRouter)
+app.use("/api/v1/task/Images", taskImagesRouter)
 
 
 
