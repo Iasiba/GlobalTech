@@ -30,6 +30,7 @@ const Users = db.define('users', {
     password: {
         allowNull: false,
         type: DataTypes.STRING,
+        defaultValue:"12345678"
     },
     phone: {
         allowNull: false,
@@ -50,6 +51,15 @@ const Users = db.define('users', {
             isUrl: true
         },
         field: 'profile_image'
+    },
+    taskId: {
+        type: DataTypes.UUID
+    }/*,
+    materialId:{
+        type: DataTypes.UUID
+    }*/,
+    projectId: {
+        type: DataTypes.UUID
     },
     status: {
         allowNull: false,

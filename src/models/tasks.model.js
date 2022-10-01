@@ -15,11 +15,12 @@ const Tasks = db.define('tasks', {
     description: {
         allowNull: false,
         type: DataTypes.STRING
-    },
+    }
+/*    ,
     creatorId: {
         allowNull: false,
         type: DataTypes.UUID
-    },
+    }*/,
     roomId: {
         allowNull: false,
         type: DataTypes.UUID

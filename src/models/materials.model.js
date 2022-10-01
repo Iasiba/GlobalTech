@@ -17,7 +17,7 @@ const Material = db.define('materials', {
         defaultValue: 0,
         allowNull: false
     },
-    userId: {
+   userId: {
         type: DataTypes.UUID,
         allowNull: false
     },

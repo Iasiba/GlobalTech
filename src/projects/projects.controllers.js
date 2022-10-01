@@ -1,14 +1,15 @@
 const uuid = require("uuid");
 
 const Projects = require("../models/projects.model");
-const Contacts = require ("../models/contacts.model")
+const Users = require ("../models/user.model")
 const Rooms = require("../models/rooms.model");
 
 const getAll = async () => {
   const res = await Projects.findAll({
     include: [
       {
-        model: Contacts
+        model: Users,
+        as:owner
       },
       {
         model: Rooms
@@ -23,7 +24,8 @@ const getById = async (id) => {
     where: { id },
     include: [
       {
-        model: Contacts
+        model: Users,
+        as: owner
       },
       {
         model: Rooms

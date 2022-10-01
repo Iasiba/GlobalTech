@@ -1,0 +1,71 @@
+const uuid = require("uuid");
+
+const Accounts = require("../models/accounts.model")
+const Project = require("../models/projects.model");
+
+const getAll = async () => {
+  const res = await Accounts.findAll({
+    include: [
+      {
+        model: Project
+      }
+    ],
+  })
+  return res
+};
+
+const getById = async (id) => {
+  const res = await Accounts.findOne({
+    where: { id },
+    include: [
+      {
+        model: Project
+      }
+    ],
+  });
+  return res;
+};
+
+const create = async (data,projectId) => {
+  const newAccount = await Accounts.create({
+    id: uuid.v4(),
+    owner:data.owner,
+    user:data.user,
+    password:data.password,
+    projectId: projectId,
+    directionIp:data.directionIp,
+    software: data.software
+  })
+  return newAccount;
+};
+
+const edit = async (accountId, data,userRol) => {
+  let res = null
+  const {id, ...restofproperties}=data
+  if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol ||     //admin
+      "97006fe0-4a35-47f4-bfbf-fc962e5fe500" === userRol ||     //programador
+      "97006fe0-4a35-47f4-bfbf-fc962e5fe500" === userRol ) {    //propietario
+    res = await Accounts.update(
+      { restofproperties },
+      { where: { id: accountId } }
+    )
+  }
+  return res
+};
+
+const remove = async (id) => {
+  const accountDeleted = await Accounts.destroy({
+    where: {
+      id: id,
+    },
+  });
+  return accountDeleted;
+};
+
+module.exports = {
+  getAll,
+  create,
+  getById,
+  edit,
+  remove
+}
