@@ -3,19 +3,23 @@ const { hashPassword } = require("../utils/crypt");
 
 const Users = require("../models/user.model");
 const Roles = require("../models/roles.model");
-const acomodations = require("../models/tasks.model");
+const Projects = require("../models/projects.model");
+const Tasks = require("../models/tasks.model")
 
 const getAllUsers = async() => {
   const res= await Users.findAll({
     include: [
       {
-        model: acomodations,
+        model: Roles
+      },
+      {
+        model: Projects,
         attributes: {
           exclude: ["createdAt", "updatedAt"],
         },
       },
       {
-        model: Roles
+        model: Tasks
       }
     ],
     attributes:{
@@ -31,13 +35,16 @@ const getUserById = async (id) => {
     where: { id },
     include: [
       {
-        model: acomodations,
+        model: Roles
+      },
+      {
+        model: Projects,
         attributes: {
           exclude: ["createdAt", "updatedAt"],
         },
       },
       {
-        model: Roles
+        model: Tasks
       }
     ],
     attributes: {

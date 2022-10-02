@@ -31,7 +31,19 @@ const getById = async (id) => {
     ],
   });
   return res;
-};
+}
+
+const getByUser = async (userId) => {
+  const res = await tasks.findAll({
+    where: { userId: userId },
+    include: [
+      {
+        model: Rooms
+      }
+    ],
+  });
+  return res;
+}
 
 const create = async (data, userId, creatorId) => {
   const newTask = await tasks.create({
@@ -78,6 +90,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByUser,
   edit,
   remove
 }

@@ -73,10 +73,12 @@ const Users = db.define('users', {
     },
     createdAt: {
         type: DataTypes.DATE,
+        defaultValue:"2000/01/01",
         allowNull: false
     },
     updatedAt: {
         type: DataTypes.DATE,
+        defaultValue:"2000/01/01",
         allowNull: false
     },
     roleId: {

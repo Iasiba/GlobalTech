@@ -20,11 +20,80 @@ const generateData = async () => {
   // await Users.sync({force: true})
 
   await Roles.bulkCreate([
+    { name: "admin", id: "5ee551ed-7bf4-44b0-aeb5-daaa824b9473" },
     { name: "programmer", id: "b9d456a0-7ace-4493-9e61-9f3efa7090e8" },
     { name: "technical", id: "fef3a08d-2cec-4728-9745-7cbd2b37e557" },
-    { name: "owner", id: "97006fe0-4a35-47f4-bfbf-fc962e5fe500" }, 
-    { name: "admin", id: "5ee551ed-7bf4-44b0-aeb5-daaa824b9473" }
+    { name: "owner", id: "97006fe0-4a35-47f4-bfbf-fc962e5fe500" }
   ], { validate: true })
+  await Users.bulkCreate([
+    {
+      id: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      firstName: "admin",
+      lastName: "admin",
+      gender: "male",
+      email: "admin@gmail.com",
+      password: "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
+      phone: "1234567890",
+      birthdayDate: "2000/10/22",
+      dni: "",
+      address: "",
+      roleId: "5ee551ed-7bf4-44b0-aeb5-daaa824b9473",
+      profileImage: "asd.com",
+      status: "active",
+      verified: false
+    },
+    {
+      id: "2fcd766a-6568-4458-8fb1-21d2bda162c6",
+      firstName: "programmer",
+      lastName: "programmer",
+      gender: "male",
+      email: "programmer@gmail.com",
+      password: "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
+      phone: "1234567890",
+      birthdayDate: "2000/10/22",
+      dni: "",
+      address: "",
+      roleId: "b9d456a0-7ace-4493-9e61-9f3efa7090e8",
+      profileImage: "asd.com",
+      status: "active",
+      verified: false
+    },
+    {
+      id: "0ccef760-ca64-4ce7-947d-2c144f96b671",
+      firstName: "technical",
+      lastName: "technical",
+      gender: "male",
+      email: "technical@gmail.com",
+      password: "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
+      phone: "1234567890",
+      birthdayDate: "2000/10/22",
+      dni: "",
+      address: "",
+      roleId: "fef3a08d-2cec-4728-9745-7cbd2b37e557",
+      profileImage: "asd.com",
+      status: "active",
+      verified: false
+    },
+    {
+      id: "a1318da8-997f-4960-82ed-15aa8a5ffc9a",
+      firstName: "owner",
+      lastName: "owner",
+      gender: "male",
+      email: "owner@gmail.com",
+      password: "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
+      phone: "1234567890",
+      birthdayDate: "2000/10/22",
+      dni: "",
+      address: "",
+      roleId: "97006fe0-4a35-47f4-bfbf-fc962e5fe500",
+      profileImage: "asd.com",
+      status: "active",
+      verified: false
+    }
+    
+  ], { validate: true })
+  
+  /*
   await Users.create({
     id: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
     firstName: "Sahid",
@@ -72,6 +141,14 @@ const generateData = async () => {
     profileImage: "asd.com",
     status: "active",
     verified: false
+  })
+
+  await Users_images.create({
+    id: "5b793ee8-f4b6-46c7-9152-f12dd66884de",
+    url: "https://youtu.be/xAc23Dx-63Y",
+    userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+    updatedAt: "2022-09-12T05:11:34.016Z",
+    createdAt: "2022-09-12T05:11:34.016Z"
   })
   /*
   await Places.bulkCreate([
@@ -201,15 +278,8 @@ const generateData = async () => {
     score: 0,
     is_finished: false,
     is_canceled: false
-  })*/
-  await Users_images.create({
-    id: "5b793ee8-f4b6-46c7-9152-f12dd66884de",
-    url: "https://youtu.be/xAc23Dx-63Y",
-    userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
-    updatedAt: "2022-09-12T05:11:34.016Z",
-    createdAt: "2022-09-12T05:11:34.016Z"
   })
-  /*
+
   await acomodation_images.create(
     {
       id: "debc3cd6-c7b7-42fe-9679-7350b7106236",

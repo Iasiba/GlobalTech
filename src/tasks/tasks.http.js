@@ -23,6 +23,18 @@ const getById = (req, res) => {
     });
 }
 
+const getByUser = (req, res) => {
+  const userId = req.user.id;
+  taskController
+    .getByUser(userId)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `task with userId ${userId} not exist` });
+    });
+}
+
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
@@ -92,6 +104,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByUser,
   remove,
   edit
 }
