@@ -30,9 +30,6 @@ const Tasks = db.define('tasks', {
         type: DataTypes.DATEONLY,
         defaultValue:"2000/01/01"//año/mes/dia
     },
-    pendingsId:{
-        type:DataTypes.UUID
-    },
     isfinished: {
         type: DataTypes.BOOLEAN,
         defaultValue: false

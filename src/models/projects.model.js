@@ -12,6 +12,12 @@ const Projects = db.define('projects', {
         type: DataTypes.UUID,
         allowNull: false
     },
+    plane:{
+        type: DataTypes.STRING,
+        validate: {
+            isUrl: true,
+        }
+    },
     address: {
         allowNull: false,
         type: DataTypes.STRING

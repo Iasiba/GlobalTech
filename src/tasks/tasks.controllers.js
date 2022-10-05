@@ -45,12 +45,12 @@ const getByUser = async (userId) => {
   return res;
 }
 
-const create = async (data, userId, creatorId) => {
+const create = async (data, userId) => {
+  console.log(data,"    ", userId)
   const newTask = await tasks.create({
     id: uuid.v4(),
     userId: userId,
     description: data.description,
-    creatorId: creatorId,
     roomId: data.roomId,
     executionDate: data.executionDate
   })

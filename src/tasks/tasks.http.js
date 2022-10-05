@@ -55,7 +55,7 @@ const create = (req, res) => {
       },
     });
   } else {
-    taskController.create(data,data.userId,req.user.id)
+    taskController.create(data,req.user.id)
       .then((response) => {
         res.status(201).json({
           message: `task created succesfully with id: ${response.id}`,

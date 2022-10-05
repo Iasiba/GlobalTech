@@ -16,8 +16,7 @@ const getAll = async () => {
     ],
   })
   return res
-};
-
+}
 const getById = async (id) => {
   const res = await rooms.findOne({
     where: { id },
@@ -31,22 +30,27 @@ const getById = async (id) => {
     ],
   });
   return res;
-};
-
-const create = async (data) => {
+}
+const getByProjectId = async (projectId) => {
+  const res = await rooms.findAll({
+    where: { projectId : projectId }
+  })
+  return res;
+}
+const create = async (data,projectId) => {
   const newRoom = await rooms.create({
     id: uuid.v4(),
-    Name: data.Name,
-    projectId: data.projectId
+    name: data.name,
+    projectId: projectId
   })
   return newRoom;
-};
-
+}
 const edit = async (id, data) => {
   let res = null
+  console.log("entrooooooooooooooooooooooooo")
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await rooms.update(
-      { ...data },
+      { data },
       { where: { id: id } }
     )
   }
@@ -66,6 +70,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByProjectId,
   edit,
   remove
 }

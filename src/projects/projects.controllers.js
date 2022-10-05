@@ -2,17 +2,21 @@ const uuid = require("uuid");
 
 const Projects = require("../models/projects.model");
 const Users = require ("../models/user.model")
-const Rooms = require("../models/rooms.model");
+const Rooms = require("../models/rooms.model")
+const Accounts = require("../models/accounts.model")
 
 const getAll = async () => {
   const res = await Projects.findAll({
     include: [
       {
-        model: Users,
-        as:owner
+        model: Users//,
+        //as:owner
       },
       {
         model: Rooms
+      },
+      {
+        model:Accounts
       }
     ],
   })
@@ -24,11 +28,14 @@ const getById = async (id) => {
     where: { id },
     include: [
       {
-        model: Users,
-        as: owner
+        model: Users
+        //,as: owner
       },
       {
         model: Rooms
+      },
+      {
+        model:Accounts
       }
     ],
   });
@@ -44,7 +51,8 @@ const create = async (data, userId) => {
     reference:data.reference,
     city:data.city,
     state:data.state,
-    country:data.country
+    country:data.country,
+    plane:data.plane
   })
   return newProject;
 };

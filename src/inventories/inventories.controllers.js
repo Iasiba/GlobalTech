@@ -1,7 +1,7 @@
 const uuid = require("uuid");
 
 const Inventories = require("../models/inventories.model")
-const Materials = require("../models/inventories.model")
+const Materials = require("../models/materials.model")
 
 const getAll = async () => {
   const res = await Inventories.findAll({
@@ -39,7 +39,7 @@ const edit = async (id, data,userRol) => {
   const {createdAt,updatedAt, ...restofproperties}=data
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await Inventories.update(
-      { restofproperties },
+      { ...restofproperties },
       { where: { id: id } }
     )
   }
@@ -47,12 +47,12 @@ const edit = async (id, data,userRol) => {
 }
 
 const remove = async (id) => {
-  const materialDeleted = await Inventories.destroy({
+  const inventoryDeleted = await Inventories.destroy({
     where: {
       id: id,
     },
   });
-  return materialDeleted;
+  return inventoryDeleted
 }
 
 module.exports = {

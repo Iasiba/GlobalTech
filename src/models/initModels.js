@@ -4,7 +4,7 @@ const Projects = require('./projects.model')
 const Tasks = require('./tasks.model')
 const TaskImages = require('./tasksImages.models')
 const Rooms = require('./rooms.model')
-const Pendings = require('./pendings.model')
+const Activities = require('./activities.model')
 const Materials = require('./materials.model')
 const Users_images = require('./users.images')
 //const Contacts = require('./contacts.model')
@@ -60,8 +60,8 @@ const initModels = () => {
     Creators.belongsTo(Users)
     Users.hasMany(Creators)
  */
-    Pendings.belongsTo(Tasks)
-    Tasks.hasMany(Pendings)
+    Activities.belongsTo(Tasks)
+    Tasks.hasMany(Activities)
 
 // 
     Materials.belongsTo(Users)

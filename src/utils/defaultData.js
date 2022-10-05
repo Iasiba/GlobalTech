@@ -7,6 +7,10 @@ const Reservations = require("../models/reservations.model");
 const Users = require("../models/user.model");
 const Users_images = require("../models/users.images");
 const Roles = require("../models/roles.model");
+const Projects = require("../models/projects.model")
+const Accounts = require("../models/accounts.model")
+const Inventories = require("../models/inventories.model")
+const Rooms =require("../models/rooms.model")
 /*
 const uuid = require('uuid');
 const acomodation_images = require("../models/acomodations.images.models");
@@ -90,9 +94,117 @@ const generateData = async () => {
       status: "active",
       verified: false
     }
-    
+
   ], { validate: true })
-  
+  await Projects.bulkCreate([
+    {
+      id: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      address: "el infierno",
+      coordinates: "666",
+      reference: "el crujir de dientes colonia el diablito",
+      city: "ardiente",
+      state: "muy Hot",
+      country: "Fuego arrazador"
+    },
+    {
+      id: "12a1166e-6945-45b6-85ef-aca1134e6776",
+      userId: "2fcd766a-6568-4458-8fb1-21d2bda162c6",
+      address: "el infierno",
+      coordinates: "666",
+      reference: "el crujir de dientes colonia el diablito",
+      city: "ardiente",
+      state: "muy Hot",
+      country: "Fuego arrazador"
+    },
+    {
+      id: "b880fd77-6b3c-4b4f-84c7-bc5083d0959a",
+      userId: "0ccef760-ca64-4ce7-947d-2c144f96b671",
+      address: "el infierno",
+      coordinates: "666",
+      reference: "el crujir de dientes colonia el diablito",
+      city: "ardiente",
+      state: "muy Hot",
+      country: "Fuego arrazador"
+    }
+  ], { validate: true })
+  await Accounts.bulkCreate([
+    {
+      id: "2e1c6462-f64c-4b84-806f-8e74a7376384",
+      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      accountName: "sonos",
+      owner: "666",
+      user: "Hot",
+      password: "1234",
+      software: "App"
+    },
+    {
+      id: "75200366-d396-454d-8f07-3b50aa9b51e1",
+      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      accountName: "sonos",
+      owner: "666",
+      user: "Hot",
+      password: "1234",
+      software: "App"
+    },
+    {
+      id: "b8422f4c-a13f-4983-bff1-f5503d23f8e6",
+      projectId: "b880fd77-6b3c-4b4f-84c7-bc5083d0959a",
+      accountName: "sonos",
+      owner: "666",
+      user: "Hot",
+      password: "1234",
+      software: "App"
+    }
+  ], { validate: true })
+  await Inventories.bulkCreate([
+    {
+      id: "cb356369-10a7-45f0-8a82-5a041df09c06",
+      name: "tools"
+    },
+    {
+      id: "53f9f16c-76af-4353-9969-3f4676397224",
+      name: "devices"
+    },
+    {
+      id: "624a47c0-b5f5-4c0a-91b3-7a00782d18bd",
+      name: "utilities"
+    },
+    {
+      id: "7883063c-8e3a-42b4-aa6a-04013a9289a6",
+      name: "products"
+    }
+  ], { validate: true })
+  await Rooms.bulkCreate([
+    {
+      id: "cbdfc4c8-5a38-4b94-851a-a4ca2ce7fd9d",
+      name: "primero",
+      projectId: "12a1166e-6945-45b6-85ef-aca1134e6776",
+      updatedAt: "2022-10-05T03:34:31.726Z",
+      createdAt: "2022-10-05T03:34:31.726Z"
+    },
+    {
+      id: "3189984c-0fd0-40cd-8516-30079a845b8e",
+      name: "segundo",
+      projectId: "b880fd77-6b3c-4b4f-84c7-bc5083d0959a",
+      updatedAt: "2022-10-05T03:34:31.726Z",
+      createdAt: "2022-10-05T03:34:31.726Z"
+    },
+    {
+      id: "c4e2251e-a640-4126-be44-c44196b9f10d",
+      name: "tercero",
+      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      updatedAt: "2022-10-05T03:34:31.726Z",
+      createdAt: "2022-10-05T03:34:31.726Z"
+    },
+    {
+      id: "f0babb16-4e3f-4733-9102-abe73cd6161e",
+      name: "cuarto",
+      projectId: "12a1166e-6945-45b6-85ef-aca1134e6776",
+      updatedAt: "2022-10-05T03:34:31.726Z",
+      createdAt: "2022-10-05T03:34:31.726Z"
+    }
+  ], { validate: true })
   /*
   await Users.create({
     id: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",

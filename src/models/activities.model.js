@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 
 const { db } = require('../utils/database')
 
-const Tasks = db.define('pendings', {
+const Activities = db.define('activities', {
     id: {
         primaryKey: true,
         type: DataTypes.UUID,
@@ -29,4 +29,4 @@ const Tasks = db.define('pendings', {
     }
 })
 
-module.exports = Tasks
+module.exports = Activities

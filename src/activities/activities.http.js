@@ -1,4 +1,4 @@
-const pendingsController = require("./pendings.controllers");
+const pendingsController = require("./activities.controllers");
 
 const getAll = (req, res) => {
   pendingsController

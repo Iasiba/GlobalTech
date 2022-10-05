@@ -15,7 +15,7 @@ const taskImagesRouter = require("./taskImages/taskImages.router").router
 const materialRouter = require("./materials/materials.router").router
 const inventoryRouter = require("./inventories/inventories.router").router
 const accountsRouter = require("./accounts/accounts.router").router
-const pendingsRouter = require("./pendings/pendings.router").router
+const activitiesRouter = require("./activities/activities.router").router
 
 const defaultData = require("./utils/defaultData")
 
@@ -64,14 +64,15 @@ app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/roles", rolesRouter)
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/userImages", userImageRouter)
-app.use("/api/v1/rooms", roomRouter)
-app.use("/api/v1/tasks", taskRouter)
+app.use("/api/v1/accounts",accountsRouter)
 app.use("/api/v1/projects", projectRouter)
+app.use("/api/v1/inventories",inventoryRouter)
+app.use("/api/v1/tasks", taskRouter)
+
+app.use("/api/v1/rooms", roomRouter)
 app.use("/api/v1/task/Images", taskImagesRouter)
 app.use("/api/v1/materials",materialRouter)
-app.use("/api/v1/inventories",inventoryRouter)
-app.use("/api/v1/projects/:projectId/accounts",accountsRouter)
-app.use("/api/v1/tasks/:taskId/pendings",pendingsRouter)
+app.use("/api/v1/tasks/:taskId/activities",activitiesRouter)
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);

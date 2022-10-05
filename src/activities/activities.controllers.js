@@ -1,10 +1,10 @@
 const uuid = require("uuid");
 
-const Pendings = require("../models/pendings.model");
+const Activities = require("../models/activities.model");
 const Tasks = require ("../models/tasks.model")
 
 const getAll = async () => {
-  const res = await Pendings.findAll({
+  const res = await Activities.findAll({
     include: [
       {
         model: Tasks
@@ -15,7 +15,7 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const res = await Pendings.findOne({
+  const res = await Activities.findOne({
     where: { id },
     include: [
       {
@@ -27,7 +27,7 @@ const getById = async (id) => {
 };
 
 const create = async (data,taskId) => {
-  const newMaterial = await Pendings.create({
+  const newMaterial = await Activities.create({
     id: uuid.v4(),
     description:data.description,
     taskId: taskId
@@ -40,7 +40,7 @@ const edit = async (id, data, userRol) => {
   const {taskId,createdAt,updatedAt, ...restofproperties}=data
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol|| //admin
       "5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//tecnicos y programadores
-    res = await Pendings.update(
+    res = await Activities.update(
       { restofproperties },
       { where: { id: id } }
     )
@@ -49,7 +49,7 @@ const edit = async (id, data, userRol) => {
 };
 
 const remove = async (id) => {
-  const pendingsDeleted = await Pendings.destroy({
+  const pendingsDeleted = await Activities.destroy({
     where: {
       id: id,
     },

@@ -1,17 +1,18 @@
 const router = require('express').Router()
 const passport = require('passport')
 const { roleAdminMiddleware } = require('../middleware/adminRole')
+const { roleProgrammerMiddleware } = require('../middleware/programmerRole')
 require('../middleware/auth.middleware')(passport)
 
 const AccountServices = require('./accounts.http')
 
-router.route('/') //* /api/v1/projects/:projectId/accounts
-    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,AccountServices.getAll)
-    .post(passport.authenticate('jwt', {session: false}),AccountServices.create)
+router.route('/') //* /api/v1/accounts/
+    .get(passport.authenticate('jwt', { session: false }),roleProgrammerMiddleware, AccountServices.getAll)
+
 router.route('/:id')
-    .get(passport.authenticate('jwt', {session: false}), AccountServices.getById)
-    .put(passport.authenticate('jwt', {session: false}), AccountServices.edit)
-    .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,AccountServices.remove)
+    .get(passport.authenticate('jwt', { session: false }),roleProgrammerMiddleware, AccountServices.getById)
+    .put(passport.authenticate('jwt', { session: false }),roleProgrammerMiddleware, AccountServices.edit)
+    .delete(passport.authenticate('jwt', { session: false }),roleProgrammerMiddleware, AccountServices.remove)
 
 
 exports.router = router

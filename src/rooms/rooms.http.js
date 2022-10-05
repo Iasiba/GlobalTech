@@ -22,24 +22,32 @@ const getById = (req, res) => {
       res.status(404).json({ message: `room with id ${id} not exist` });
     });
 }
-
+const getByProjectId = (req, res) => {
+  const id = req.params.id;
+  roomController
+    .getByProjectId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `room with id ${id} not exist` });
+    });
+}
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
-    !data.projectId||
-    !data.Name
+    !data.name
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        Name: "TEXT",
-        projectId: "UUID"
+        name: "TEXT"
       },
     });
   } else {
-    roomController.create(data)
+    roomController.create(data,req.params.id)
       .then((response) => {
         res.status(201).json({
           message: `room created succesfully with id: ${response.id}`,
@@ -58,6 +66,7 @@ const edit = (req, res) => {
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {
+    console.log(id,data)
     roomController.edit(id, data)
       .then((response) => {
         res.status(200).json({
@@ -88,6 +97,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByProjectId,
   remove,
   edit
 }

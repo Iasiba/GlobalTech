@@ -12,7 +12,7 @@ const Accounts = db.define('accounts', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    accountName: {
+    user: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -30,7 +30,7 @@ const Accounts = db.define('accounts', {
         defaultValue:"0.0.0.0",
         allowNull: false
     },
-    application: {
+    software: {
         type: DataTypes.STRING,
         defaultValue:"",
         allowNull: false

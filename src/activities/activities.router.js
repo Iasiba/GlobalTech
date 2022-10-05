@@ -3,7 +3,7 @@ const passport = require('passport')
 const { roleAdminMiddleware } = require('../middleware/adminRole')
 require('../middleware/auth.middleware')(passport)
 
-const pendingServices = require('./pendings.http')
+const pendingServices = require('./activities.http')
 
 
 router.route('/') //* /api/v1/tasks/:taskId/pendings

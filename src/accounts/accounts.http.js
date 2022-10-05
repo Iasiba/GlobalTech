@@ -23,9 +23,21 @@ const getById = (req, res) => {
     });
 }
 
+const getByProjectId = (req, res) => {
+  const projectId = req.params.id;
+  accountsController
+    .getByProjectId(projectId)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `accounts with id ${projectId} not exist` });
+    });
+}
+
 const create = (req, res) => {
   const data = req.body;
-  const projectId=req.params.projectId
+  const projectId=req.params.id
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
@@ -63,7 +75,7 @@ const edit = (req, res) => {
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {
-    accountsController.edit(id,data,req.user.rol)
+    accountsController.edit(id,data,req.user.id,req.user.rol)
       .then((response) => {
         res.status(200).json({
           message: 'account edited succesfully',
@@ -91,8 +103,9 @@ const remove = (req, res) => {
 }
 module.exports = {
   getAll,
-  create,
   getById,
+  getByProjectId,
+  create,
   remove,
   edit
 }
