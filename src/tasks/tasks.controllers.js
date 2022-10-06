@@ -3,20 +3,24 @@ const uuid = require("uuid");
 const tasks = require("../models/tasks.model");
 const Rooms = require("../models/rooms.model");
 const Users = require("../models/user.model");
+const Activities = require("../models/activities.model")
 
 const getAll = async () => {
   const res = await tasks.findAll({
-    include: [
+    include: [        //esto muestra usuario creador y habitacion a la que pertenece y  
       {
         model: Rooms
       },
       {
         model: Users
+      },
+      {
+        model: Activities
       }
     ],
   })
   return res
-};
+}
 
 const getById = async (id) => {
   const res = await tasks.findOne({
@@ -27,6 +31,9 @@ const getById = async (id) => {
       },
       {
         model: Users
+      },
+      {
+        model: Activities
       }
     ],
   });
@@ -45,27 +52,34 @@ const getByUser = async (userId) => {
   return res;
 }
 
-const create = async (data, userId) => {
+const getByRoomId = async (roomId) => {
+  const res = await tasks.findAll({
+    where: { roomId: roomId }
+  });
+  return res;
+}
+
+const create = async (data, userId,roomId) => {
   console.log(data,"    ", userId)
   const newTask = await tasks.create({
     id: uuid.v4(),
     userId: userId,
     description: data.description,
-    roomId: data.roomId,
+    roomId: roomId,
     executionDate: data.executionDate
   })
   return newTask;
-};
+}
 
-const edit = async (id, data) => {
+const edit = async (id, data,userId,userRol) => {
   let res = null
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await tasks.update(
-      { ...data },
+      { userId,...data },
       { where: { id: id } }
     )
   } else {
-    const { roomId, creatorId, description, userId, ...restofproperties } = data
+    const { roomId, description, userId, ...restofproperties } = data
     const userdesignated = getById(id)
     if (userId === userdesignated.userId) {
       res = await tasks.update(
@@ -75,7 +89,7 @@ const edit = async (id, data) => {
     }
   }
   return res
-};
+}
 
 const remove = async (id) => {
   const taskDeleted = await tasks.destroy({
@@ -84,13 +98,14 @@ const remove = async (id) => {
     },
   });
   return taskDeleted;
-};
+}
 
 module.exports = {
   getAll,
   create,
   getById,
   getByUser,
+  getByRoomId,
   edit,
   remove
 }

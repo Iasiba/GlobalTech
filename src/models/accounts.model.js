@@ -8,6 +8,10 @@ const Accounts = db.define('accounts', {
         type: DataTypes.UUID,
         allowNull: false
     },
+    userId:{
+        type: DataTypes.UUID,
+        allowNull: false
+    },
     owner: {
         type: DataTypes.STRING,
         allowNull: false

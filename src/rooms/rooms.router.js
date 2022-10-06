@@ -4,9 +4,10 @@ const { roleAdminMiddleware } = require('../middleware/adminRole')
 require('../middleware/auth.middleware')(passport)
 
 const roomServices = require('./rooms.http')
+const taskServices =require('../tasks/tasks.http')
 
 
-router.route('/') //* /api/v1/project/:id/rooms/      esta ruta debe de estar en projects
+router.route('/') //* /api/v1/project/:id/rooms/  
     .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,roomServices.getAll)
 
 router.route('/:id')
@@ -14,5 +15,8 @@ router.route('/:id')
     .put(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,roomServices.edit)
     .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,roomServices.remove)
 
+router.route('/:roomId/tasks') // tareas de una habitacion de un projecto
+    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,taskServices.getByRoomId)
+    .post(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,taskServices.create)
 
 exports.router = router

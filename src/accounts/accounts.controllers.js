@@ -38,9 +38,10 @@ const getByProjectId = async (projectId) => {
   return res;
 }
 
-const create = async (data, projectId) => {
+const create = async (data, projectId,creatorId) => {
   const newAccount = await Accounts.create({
     id: uuid.v4(),
+    userId:creatorId,
     owner: data.owner,
     user: data.user,
     password: data.password,
@@ -53,7 +54,7 @@ const create = async (data, projectId) => {
 
 const edit = async (accountId, data,userId, userRol) => {
   let res = null
-  const { id, owner, ...restofproperties } = data
+  const { id, owner,creatorId, ...restofproperties } = data
   if ("97006fe0-4a35-47f4-bfbf-fc962e5fe500" === userRol) {    //propietario falta completar propietario LOGUEO Router account
     let account= await Accounts.findOne({ where: {id:accountId }})
     if(account.userId===userId){

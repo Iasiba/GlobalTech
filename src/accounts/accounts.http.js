@@ -56,7 +56,7 @@ const create = (req, res) => {
       },
     });
   } else {
-    accountsController.create(data,projectId)
+    accountsController.create(data,projectId,req.user.id)
       .then((response) => {
         res.status(201).json({
           message: `account created succesfully with id: ${response.id}`,

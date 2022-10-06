@@ -67,12 +67,12 @@ app.use("/api/v1/userImages", userImageRouter)
 app.use("/api/v1/accounts",accountsRouter)
 app.use("/api/v1/projects", projectRouter)
 app.use("/api/v1/inventories",inventoryRouter)
+app.use("/api/v1/rooms", roomRouter)
 app.use("/api/v1/tasks", taskRouter)
 
-app.use("/api/v1/rooms", roomRouter)
+app.use("/api/v1/tasks/:taskId/activities",activitiesRouter)
 app.use("/api/v1/task/Images", taskImagesRouter)
 app.use("/api/v1/materials",materialRouter)
-app.use("/api/v1/tasks/:taskId/activities",activitiesRouter)
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);

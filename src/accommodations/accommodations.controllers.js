@@ -60,10 +60,10 @@ const createAccommodation = async (data) => {
     data.bathrooms,
     data.price,
     data.hostId,
-data.userId,
-     5,
-   data.placeId,
-   data.commision)//posible error por string error //como se manda user por req.user.id y el usuario como sabe que id tienen las cosas
+    data.userId,
+    5,
+    data.placeId,
+    data.commision)//posible error por string error //como se manda user por req.user.id y el usuario como sabe que id tienen las cosas
   const newAccommodation = await Accommodations.create({
     id: uuid.v4(),
     title: data.title,
@@ -88,7 +88,7 @@ const editAccommodation = async (idAccommodation, data, userRol, hostId) => {
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//usuario cualquiera
     res = await Accommodations.update(
       { ...restOfProperties },
-      { where: { id: idAccommodation,hostId:hostId } } //id de accommodation perteciente a hostid sera verdad
+      { where: { id: idAccommodation, hostId: hostId } } //id de accommodation perteciente a hostid sera verdad
     )
   } else {
     res = await Accommodations.update(
@@ -99,7 +99,7 @@ const editAccommodation = async (idAccommodation, data, userRol, hostId) => {
   return res
 }
 
-const deleteAccommodation = async (id) =>{
+const deleteAccommodation = async (id) => {
   const AccommodationDeleted = await Accommodations.destroy({
     where: {
       id: id,

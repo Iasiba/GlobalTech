@@ -45,13 +45,12 @@ const create = async (data,projectId) => {
   })
   return newRoom;
 }
-const edit = async (id, data) => {
+const edit = async (id, data,userRol) => {
   let res = null
-  console.log("entrooooooooooooooooooooooooo")
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await rooms.update(
-      { data },
-      { where: { id: id } }
+      data,
+      { where: { id } } //id de accommodation perteciente a hostid sera verdad
     )
   }
   return res

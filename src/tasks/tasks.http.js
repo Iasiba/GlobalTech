@@ -35,27 +35,35 @@ const getByUser = (req, res) => {
     });
 }
 
+const getByRoomId = (req, res) => {
+  const roomId = req.params.roomId
+  taskController
+    .getByRoomId(roomId)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `task with userId ${roomId} not exist` });
+    });
+}
+
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
-    !data.userId||
     !data.description||
-    !data.roomId||
     !data.executionDate
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        "userId":"userId",
         "description":"description",
-        "roomId":"roomId",
         "executionDate":"executionDate"
       },
     });
   } else {
-    taskController.create(data,req.user.id)
+    taskController.create(data,req.user.id,req.params.roomId)
       .then((response) => {
         res.status(201).json({
           message: `task created succesfully with id: ${response.id}`,
@@ -74,7 +82,7 @@ const edit = (req, res) => {
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {
-    taskController.edit(id, {...data,...{userId:req.user.id}})
+    taskController.edit(id, data,req.user.id, req.user.rol)
       .then((response) => {
         res.status(200).json({
           message: 'task edited succesfully',
@@ -105,6 +113,7 @@ module.exports = {
   create,
   getById,
   getByUser,
+  getByRoomId,
   remove,
   edit
 }

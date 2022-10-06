@@ -12,7 +12,7 @@ const getAll = (req, res) => {
 }
 
 const getById = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.id
   roomController
     .getById(id)
     .then((response) => {
@@ -66,8 +66,7 @@ const edit = (req, res) => {
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {
-    console.log(id,data)
-    roomController.edit(id, data)
+    roomController.edit(id, data,req.user.rol)
       .then((response) => {
         res.status(200).json({
           message: 'room edited succesfully',
