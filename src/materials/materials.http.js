@@ -23,6 +23,18 @@ const getById = (req, res) => {
     });
 }
 
+const getByInventoryId = (req, res) => {
+  const id = req.params.id;
+  materialController
+    .getByInventoryId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `material with inventoryId ${id} not exist` });
+    });
+}
+
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
@@ -30,7 +42,6 @@ const create = (req, res) => {
   } else if (
     !data.name||
     !data.amount||
-    !data.inventoryId||
     !data.projectId
   ) {
     return res.status(400).json({
@@ -38,12 +49,11 @@ const create = (req, res) => {
       fields: {
         "name":"TEXT",
         "amount":"TEXT",
-        "inventoryId":"UUID",
-        "proyectId":"UUID"
+        "projectId":"UUID"
       },
     });
   } else {
-    materialController.create(data)
+    materialController.create(data,req.params.id)
       .then((response) => {
         res.status(201).json({
           message: `material created succesfully with id: ${response.id}`,
@@ -92,6 +102,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByInventoryId,
   remove,
   edit
 }

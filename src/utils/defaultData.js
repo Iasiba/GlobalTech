@@ -5,13 +5,16 @@ const Places = require("../models/places.model");
 const Reservations = require("../models/reservations.model");
 */
 const Users = require("../models/user.model")
-const Users_images = require("../models/users.images")
+const UsersImages = require("../models/users.images")
 const Roles = require("../models/roles.model")
 const Projects = require("../models/projects.model")
 const Accounts = require("../models/accounts.model")
 const Inventories = require("../models/inventories.model")
 const Rooms =require("../models/rooms.model")
 const Tasks = require("../models/tasks.model")
+const Activities = require("../models/activities.model")
+const Material = require("../models/materials.model")
+
 /*
 const uuid = require('uuid');
 const acomodation_images = require("../models/acomodations.images.models");
@@ -239,9 +242,86 @@ const generateData = async () => {
       executionDate: "2022/02/03"
      }
   ], { validate: true })
-
-
-
+  await Activities.bulkCreate([
+    {
+      id: "ce821d18-dab1-4c33-bc98-6c681ba327b4",
+      description: "textsss",
+      isfinished: false,
+      iscanceled: false,
+      createdAt: "2022-10-07T02:16:01.871Z",
+      updatedAt: "2022-10-07T02:16:01.871Z",
+      taskId: "e889af51-ef94-46ea-b8f5-b681cabb9d1c"
+    },
+    {
+      id: "afa125b6-db8e-4abd-9e3e-28d54142b38f",
+      description: "textsss",
+      isfinished: false,
+      iscanceled: false,
+      createdAt: "2022-10-07T02:16:02.731Z",
+      updatedAt: "2022-10-07T02:16:02.731Z",
+      taskId: "e889af51-ef94-46ea-b8f5-b681cabb9d1c"
+    },
+    {
+      id: "13599ff3-25c2-4428-a2c2-9e4894cfd6af",
+      description: "textsss",
+      isfinished: false,
+      iscanceled: false,
+      createdAt: "2022-10-07T02:16:03.286Z",
+      updatedAt: "2022-10-07T02:16:03.286Z",
+      taskId: "e889af51-ef94-46ea-b8f5-b681cabb9d1c"
+    },
+    {
+      id: "44481f9b-32f2-4dd3-8fc7-801e5f00e71d",
+      description: "textsss",
+      isfinished: false,
+      iscanceled: false,
+      createdAt: "2022-10-07T02:16:03.403Z",
+      updatedAt: "2022-10-07T02:16:03.403Z",
+      taskId: "e889af51-ef94-46ea-b8f5-b681cabb9d1c"
+    }
+  ], { validate: true })
+  await UsersImages.create({
+    id: "5b793ee8-f4b6-46c7-9152-f12dd66884de",
+    url: "https://youtu.be/xAc23Dx-63Y",
+    userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+    updatedAt: "2022-09-12T05:11:34.016Z",
+    createdAt: "2022-09-12T05:11:34.016Z"
+  })
+  await Material.bulkCreate([
+    {
+      id: "6ea3be59-99a4-4136-9047-9c7f0825518e",
+      name: "TEXT",
+      amount: 555,
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
+      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      returned: false,
+      createdAt: "2022-10-07T03:13:28.662Z",
+      updatedAt: "2022-10-07T03:13:28.662Z"
+    },
+    {
+      id: "7909f627-f871-4b8f-9c8c-9ec27abb5f63",
+      name: "TEXT",
+      amount: 555,
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
+      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      returned: false,
+      createdAt: "2022-10-07T03:13:29.108Z",
+      updatedAt: "2022-10-07T03:13:29.108Z"
+    },
+    {
+      id: "001285b2-0514-4a41-b258-0edf3900c1c5",
+      name: "TEXT",
+      amount: 555,
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
+      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      returned: false,
+      createdAt: "2022-10-07T03:13:29.292Z",
+      updatedAt: "2022-10-07T03:13:29.292Z"
+    }
+  ], { validate: true })
   /*
   await Users.create({
     id: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
@@ -290,14 +370,6 @@ const generateData = async () => {
     profileImage: "asd.com",
     status: "active",
     verified: false
-  })
-
-  await Users_images.create({
-    id: "5b793ee8-f4b6-46c7-9152-f12dd66884de",
-    url: "https://youtu.be/xAc23Dx-63Y",
-    userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
-    updatedAt: "2022-09-12T05:11:34.016Z",
-    createdAt: "2022-09-12T05:11:34.016Z"
   })
   /*
   await Places.bulkCreate([

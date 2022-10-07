@@ -24,15 +24,22 @@ const getById = async (id) => {
     ],
   });
   return res;
-};
+}
+
+const getByActivityId = async (taskId) => {
+  const res = await Activities.findAll({
+    where: { taskId }
+  });
+  return res;
+}
 
 const create = async (data,taskId) => {
-  const newMaterial = await Activities.create({
+  const newActivity = await Activities.create({
     id: uuid.v4(),
     description:data.description,
     taskId: taskId
   })
-  return newMaterial;
+  return newActivity;
 };
 
 const edit = async (id, data, userRol) => {
@@ -41,26 +48,27 @@ const edit = async (id, data, userRol) => {
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol|| //admin
       "5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//tecnicos y programadores
     res = await Activities.update(
-      { restofproperties },
+      { ...restofproperties },
       { where: { id: id } }
     )
   }
   return res
-};
+}
 
 const remove = async (id) => {
-  const pendingsDeleted = await Activities.destroy({
+  const activityDeleted = await Activities.destroy({
     where: {
       id: id,
     },
-  });
-  return pendingsDeleted;
-};
+  })
+  return activityDeleted;
+}
 
 module.exports = {
   getAll,
   create,
   getById,
+  getByActivityId,
   edit,
   remove
 }

@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 
 const { db } = require('../utils/database')
 
-const Users = db.define('user_images', {
+const Users = db.define('userImages', {
     id: {
         primaryKey: true,
         type: DataTypes.UUID,

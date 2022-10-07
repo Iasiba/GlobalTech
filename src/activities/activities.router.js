@@ -3,16 +3,16 @@ const passport = require('passport')
 const { roleAdminMiddleware } = require('../middleware/adminRole')
 require('../middleware/auth.middleware')(passport)
 
-const pendingServices = require('./activities.http')
+const activitiesServices = require('./activities.http')
 
 
-router.route('/') //* /api/v1/tasks/:taskId/pendings
-    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,pendingServices.getAll)
-    .post(passport.authenticate('jwt', {session: false}), pendingServices.create)
+router.route('/') //* /api/v1/activities
+    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,activitiesServices.getAll)
+    
 router.route('/:id')
-    .get(passport.authenticate('jwt', {session: false}), pendingServices.getById)
-    .put(passport.authenticate('jwt', {session: false}), pendingServices.edit)
-    .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,pendingServices.remove)
+    .get(passport.authenticate('jwt', {session: false}), activitiesServices.getById)
+    .put(passport.authenticate('jwt', {session: false}), activitiesServices.edit)
+    .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,activitiesServices.remove)
 
 
 exports.router = router

@@ -1,10 +1,10 @@
-const pendingsController = require("./activities.controllers");
+const activitiesController = require("./activities.controllers");
 
 const getAll = (req, res) => {
-  pendingsController
+  activitiesController
     .getAll()
     .then((response) => {
-      res.status(200).json({ items: response.length, pendings: response });
+      res.status(200).json({ items: response.length, activities: response });
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -13,19 +13,31 @@ const getAll = (req, res) => {
 
 const getById = (req, res) => {
   const id = req.params.id;
-  pendingsController
+  activitiesController
     .getById(id)
     .then((response) => {
       res.status(200).json(response);
     })
     .catch((err) => {
-      res.status(404).json({ message: `pendings with id ${id} not exist` });
+      res.status(404).json({ message: `activity with id ${id} not exist` });
+    });
+}
+
+const getByTaskId = (req, res) => {
+  const id = req.params.id;
+  activitiesController
+    .getByActivityId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `activity with activityId ${id} not exist` });
     });
 }
 
 const create = (req, res) => {
   const data = req.body;
-  const taskId = req.params.taskId
+  const taskId = req.params.id
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
@@ -38,11 +50,11 @@ const create = (req, res) => {
       },
     });
   } else {
-    pendingsController.create(data,taskId)
+    activitiesController.create(data,taskId)
       .then((response) => {
         res.status(201).json({
-          message: `pendings created succesfully with id: ${response.id}`,
-          pendings: response,
+          message: `activity created succesfully with id: ${response.id}`,
+          activity: response,
         });
       })
       .catch(err => {
@@ -57,11 +69,11 @@ const edit = (req, res) => {
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {
-    pendingsController.edit(id,data,req.user.rol)
+    activitiesController.edit(id,data,req.user.rol)
       .then((response) => {
         res.status(200).json({
-          message: 'pendings edited succesfully',
-          pendings: response
+          message: 'activity edited succesfully',
+          activity: response
         })
       })
       .catch((err) => {
@@ -72,7 +84,7 @@ const edit = (req, res) => {
 
 const remove = (req, res) => {
   const id = req.params.id;
-  pendingsController.remove(id)
+  activitiesController.remove(id)
     .then((response) => {
       if(response){
         res.status(204).json({message:response})
@@ -87,6 +99,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByTaskId,
   remove,
   edit
 }
