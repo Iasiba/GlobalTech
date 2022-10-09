@@ -28,7 +28,7 @@ const getAllUsers = async() => {
   })
   //? select * from users;
   return res
-};
+}
 
 const getUserById = async (id) => {
   const res = await Users.findOne({
@@ -54,8 +54,6 @@ const getUserById = async (id) => {
   return res;
   //? select * from users where id = ${id};
 }
-
-
 
 const createUser = async (data) => {
   console.log("entro a crear users")
@@ -112,7 +110,7 @@ const deleteUser = async (id) => {
     },
   });
   return UserDeleted;
-};
+}
 
 const getUserByEmail = async (email) => {
   const user = await Users.findOne({
@@ -123,7 +121,7 @@ const getUserByEmail = async (email) => {
   });
   return user;
   //? select * from users where email = ${email};
-};
+}
 
 const editProfileImg = async (userID, imgUrl) => {
   const data = await Users.update(
@@ -154,7 +152,7 @@ const getUserWithRole = async (userId) => {
     },
   });
   return data;
-};
+}
 module.exports = {
   createUser,
   getAllUsers,

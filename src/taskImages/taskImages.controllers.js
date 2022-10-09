@@ -13,7 +13,7 @@ const getAll = async () => {
     ]
   })
   return res
-};
+}
 
 const getById = async (id,userId) => {//solo admins y propietario
   const res = await taskImages.findOne({
@@ -25,17 +25,24 @@ const getById = async (id,userId) => {//solo admins y propietario
     ]
   });
   return res;
-};
+}
 
-const create = async (data) => {
+const getByTaskId = async (taskId) => {
+  const res = await taskImages.findAll({
+    where: { taskId }
+  });
+  return res;
+}
+
+const create = async (data,imgPath,taskId) => {
   const newuserImages = await taskImages.create({
     id: uuid.v4(),
     name:data.name,
-    url: data.url,          //HAY QUE CREAR BIEN LA RUTA
-    taskId: data.taskId
+    url: imgPath,          //HAY QUE CREAR BIEN LA RUTA
+    taskId: taskId
   })
   return newuserImages;
-};
+}
 
 const edit = async (id, data, userId,userRol) => {//verificar si es propietario
   let res = null
@@ -51,7 +58,7 @@ const edit = async (id, data, userId,userRol) => {//verificar si es propietario
     )
   }
   return res
-};
+}
 
 const remove = async (id) => {
   const taskImageDeleted = await taskImages.destroy({
@@ -60,12 +67,13 @@ const remove = async (id) => {
     },
   });
   return taskImageDeleted;
-};
+}
 
 module.exports = {
   getAll,
   create,
   getById,
+  getByTaskId,
   edit,
   remove
 }

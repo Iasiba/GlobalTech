@@ -22,30 +22,37 @@ const getById = (req, res) => {
       res.status(404).json({ message: `taskImage with id ${id} not exist` });
     });
 }
-
+const getBytaskId = (req, res) => {
+  const id = req.params.id;
+  taskImagesControllers
+    .getByTaskId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `taskImage with taskId ${id} not exist` });
+    });
+}
 const create = (req, res) => {
   const data = req.body;
+  const imgPath = req.hostname + ':8000' + '/api/v1/uploads/taskImages' + req.file.filename 
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
-    !data.url||
-    !data.taskId||
     !data.name
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        url: "url",
-        taskId: "UUID",
         name:"TEXT"
       },
     });
   } else {
-    taskImagesControllers.create(data)
+    taskImagesControllers.create(data,imgPath, req.params.id)
       .then((response) => {
         res.status(201).json({
           message: `taskImage created succesfully with id: ${response.id}`,
-          user: response,
+          taskImage: response,
         });
       })
       .catch(err => {
@@ -53,7 +60,6 @@ const create = (req, res) => {
       }) 
   }
 }
-
 const edit = (req, res) => {
   const id = req.params.id;
   const data = req.body;
@@ -73,7 +79,6 @@ const edit = (req, res) => {
   }
   
 }
-
 const remove = (req, res) => {
   const id = req.params.id;
   taskImagesControllers.remove(id)
@@ -92,6 +97,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getBytaskId,
   remove,
   edit
-};
+}
