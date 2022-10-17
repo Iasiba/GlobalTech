@@ -18,6 +18,10 @@ const Projects = db.define('projects', {
             isUrl: true,
         }
     },
+    name: {
+        allowNull: false,
+        type: DataTypes.STRING
+    },
     address: {
         allowNull: false,
         type: DataTypes.STRING

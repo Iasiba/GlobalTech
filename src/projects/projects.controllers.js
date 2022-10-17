@@ -45,6 +45,7 @@ const getById = async (id) => {
 const create = async (data, userId) => {
   const newProject = await Projects.create({
     id: uuid.v4(),
+    name:data.name,
     userId: userId,
     address:data.address,
     coordinates:data.coordinates,

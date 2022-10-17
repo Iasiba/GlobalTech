@@ -32,6 +32,11 @@ const Material = db.define('materials', {
     returned: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    onHold: {
+        allowNull:false,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 })
 

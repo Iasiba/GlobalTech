@@ -28,6 +28,7 @@ const create = (req, res) => {
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
+    !data.name||
     !data.address||
     !data.coordinates||
     !data.reference||
@@ -38,6 +39,7 @@ const create = (req, res) => {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
+        "name":"TEXT",
         "address":"TEXT",
         "coordinates":"TEXT",
         "reference":"TEXT",

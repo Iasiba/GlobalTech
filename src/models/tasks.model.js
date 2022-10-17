@@ -15,6 +15,16 @@ const Tasks = db.define('tasks', {
     description: {
         allowNull: false,
         type: DataTypes.STRING
+    },
+    observation: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        defaultValue:""
+    },
+    material: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        defaultValue:"ninguno"
     }
 /*    ,
     creatorId: {

@@ -104,6 +104,7 @@ const generateData = async () => {
     {
       id: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      name:"xxx",
       address: "el infierno",
       coordinates: "666",
       reference: "el crujir de dientes colonia el diablito",
@@ -114,6 +115,7 @@ const generateData = async () => {
     {
       id: "12a1166e-6945-45b6-85ef-aca1134e6776",
       userId: "2fcd766a-6568-4458-8fb1-21d2bda162c6",
+      name:"yyy",
       address: "el infierno",
       coordinates: "666",
       reference: "el crujir de dientes colonia el diablito",
@@ -124,6 +126,7 @@ const generateData = async () => {
     {
       id: "b880fd77-6b3c-4b4f-84c7-bc5083d0959a",
       userId: "0ccef760-ca64-4ce7-947d-2c144f96b671",
+      name:"zzz",
       address: "el infierno",
       coordinates: "666",
       reference: "el crujir de dientes colonia el diablito",

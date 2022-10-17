@@ -1,4 +1,5 @@
 //* Dependencias
+const cors = require('cors')
 const express = require("express")
 const passport = require("passport")
 require("./middleware/auth.middleware")(passport)
@@ -60,6 +61,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).json({ message: "All ok!" });
 });
+
+app.use(cors())
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/roles", rolesRouter)
 app.use("/api/v1/users", userRouter)

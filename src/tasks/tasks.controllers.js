@@ -3,13 +3,15 @@ const uuid = require("uuid");
 const tasks = require("../models/tasks.model");
 const Rooms = require("../models/rooms.model");
 const Users = require("../models/user.model");
-const Activities = require("../models/activities.model")
+const Activities = require("../models/activities.model");
+const Projects = require("../models/projects.model")
 
 const getAll = async () => {
   const res = await tasks.findAll({
     include: [        //esto muestra usuario creador y habitacion a la que pertenece y  
       {
         model: Rooms
+        ,include: Projects
       },
       {
         model: Users
@@ -28,6 +30,7 @@ const getById = async (id) => {
     include: [
       {
         model: Rooms
+        ,include: Projects
       },
       {
         model: Users
@@ -64,6 +67,8 @@ const create = async (data, userId,roomId) => {
   const newTask = await tasks.create({
     id: uuid.v4(),
     userId: userId,
+    observation:data.observation,
+    material:data.material,
     description: data.description,
     roomId: roomId,
     executionDate: data.executionDate
