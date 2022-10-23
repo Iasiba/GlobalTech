@@ -50,7 +50,7 @@ const create = (req, res) => {
       },
     });
   } else {
-    activitiesController.create(data,taskId)
+    activitiesController.create(data,taskId,req.user.id)
       .then((response) => {
         res.status(201).json({
           message: `activity created succesfully with id: ${response.id}`,

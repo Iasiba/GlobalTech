@@ -248,6 +248,7 @@ const generateData = async () => {
   await Activities.bulkCreate([
     {
       id: "ce821d18-dab1-4c33-bc98-6c681ba327b4",
+      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -257,6 +258,7 @@ const generateData = async () => {
     },
     {
       id: "afa125b6-db8e-4abd-9e3e-28d54142b38f",
+      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -266,6 +268,7 @@ const generateData = async () => {
     },
     {
       id: "13599ff3-25c2-4428-a2c2-9e4894cfd6af",
+      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -275,6 +278,7 @@ const generateData = async () => {
     },
     {
       id: "44481f9b-32f2-4dd3-8fc7-801e5f00e71d",
+      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,

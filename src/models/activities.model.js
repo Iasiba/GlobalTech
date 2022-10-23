@@ -8,6 +8,10 @@ const Activities = db.define('activities', {
         type: DataTypes.UUID,
         allowNull: false
     },
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false
+    },
     description: {
         allowNull: false,
         type: DataTypes.STRING
@@ -22,7 +26,7 @@ const Activities = db.define('activities', {
         defaultValue: false
     },
     createdAt: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     updatedAt: {
         type: DataTypes.DATE

@@ -53,6 +53,9 @@ const initModels = () => {
 
     Users.belongsTo(Tasks)
     Tasks.hasMany(Users)
+    
+    Activities.belongsTo(Users)
+    Users.hasMany(Activities)
 /**
     Tasks.belongsTo(Creators)
     Creators.hasMany(Tasks)
