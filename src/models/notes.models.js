@@ -7,6 +7,11 @@ const Note = db.define('note', {
         type: DataTypes.UUID,
         allowNull: false
     },
+    tittle: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        defaultValue:""
+    },
     note: {
         allowNull: false,
         type: DataTypes.STRING

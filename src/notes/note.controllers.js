@@ -25,7 +25,8 @@ const create = async (data,userId) => {
   const newNote = await Note.create({
     id: uuid.v4(),
     note:data.note,
-    userId:userId
+    userId:userId,
+    tittle:data.tittle
   })
   return newNote;
 };
