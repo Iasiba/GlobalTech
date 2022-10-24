@@ -17,6 +17,9 @@ const materialRouter = require("./materials/materials.router").router
 const inventoryRouter = require("./inventories/inventories.router").router
 const accountsRouter = require("./accounts/accounts.router").router
 const activitiesRouter = require("./activities/activities.router").router
+const programmingRouter = require("./programming/programming.router").router
+const noteRouter = require ("./notes/note.router").router
+const backupRouter = require("./backups/backup.router").router
 
 const defaultData = require("./utils/defaultData")
 
@@ -66,7 +69,7 @@ app.use(cors())
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/roles", rolesRouter)
 app.use("/api/v1/users", userRouter)
-app.use("/api/v1/userImages", userImageRouter)
+app.use("/api/v1/userImages", userImageRouter) 
 app.use("/api/v1/accounts",accountsRouter)
 app.use("/api/v1/projects", projectRouter)
 app.use("/api/v1/inventories",inventoryRouter)
@@ -74,6 +77,11 @@ app.use("/api/v1/rooms", roomRouter)
 app.use("/api/v1/tasks", taskRouter)
 app.use("/api/v1/activities",activitiesRouter)
 app.use("/api/v1/materials",materialRouter)
+app.use("/api/v1/programmings",programmingRouter)
+app.use("/api/v1/notes",noteRouter)
+app.use("/api/v1/backups",backupRouter)
+
+
 
 app.use("/api/v1/taskImages", taskImagesRouter)
 

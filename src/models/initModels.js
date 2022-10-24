@@ -11,6 +11,9 @@ const Users_images = require('./users.images')
 //const Creators = require('./creators.model')
 const Inventory = require('./inventories.model')
 const Accounts = require('./accounts.model')
+const Programming=require('./programming.models')
+const Note=require('./notes.models')
+const Backups=require('./backups.models')
 
 //const Reservations = require('./reservations.model')
 //const Acomodations = require('./acomodations.model')
@@ -28,6 +31,18 @@ const initModels = () => {
     //? Users -> Users_images
     Users_images.belongsTo(Users)
     Users.hasMany(Users_images)
+
+    Note.belongsTo(Users)
+    Users.hasMany(Note)
+
+    Programming.belongsTo(Users)
+    Users.hasMany(Programming)
+
+    Backups.belongsTo(Users)
+    Users.hasMany(Backups)
+
+    Backups.belongsTo(Projects)
+    Projects.hasMany(Backups)
 
     TaskImages.belongsTo(Tasks)
     Tasks.hasMany(TaskImages)
