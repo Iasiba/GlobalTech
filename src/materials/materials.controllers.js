@@ -47,14 +47,14 @@ const getByInventoryId = async (inventoryId) => {
   return res;
 }
 
-const create = async (data,inventoryId) => {
+const create = async (data,inventoryId,userId) => {
   console.log(data,"     ",inventoryId)
   const newMaterial = await Materials.create({
     id: uuid.v4(),
     onHold:data.onHold,
     name:data.name,
     amount:data.amount,
-    userId: data.userId,
+    userId: userId,
     inventoryId:inventoryId,
     projectId: data.projectId
   })

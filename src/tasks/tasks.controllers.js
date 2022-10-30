@@ -57,7 +57,19 @@ const getByUser = async (userId) => {
 
 const getByRoomId = async (roomId) => {
   const res = await tasks.findAll({
-    where: { roomId: roomId }
+    where: { roomId: roomId },
+    include: [
+      {
+        model: Rooms
+        ,include: Projects
+      },
+      {
+        model: Users
+      },
+      {
+        model: Activities
+      }
+    ]
   });
   return res;
 }

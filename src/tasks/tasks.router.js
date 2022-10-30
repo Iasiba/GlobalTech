@@ -10,12 +10,12 @@ const taskImageServices = require('../taskImages/taskImages.http')
 
 
 router.route('/') //* /api/v1/tasks      esta ruta debe de estar en projects
-    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,taskServices.getAll)
+    .get(passport.authenticate('jwt', {session: false}),/* roleAdminMiddleware,*/taskServices.getAll)
 
 router.route('/:id')
     .get(passport.authenticate('jwt', {session: false}), taskServices.getById)
     .put(passport.authenticate('jwt', {session: false}),taskServices.edit)
-    .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,taskServices.remove)
+    .delete(passport.authenticate('jwt', {session: false}), /*roleAdminMiddleware,*/taskServices.remove)
 
 router.route('/:id/activities')
     .get(passport.authenticate('jwt', {session: false}), activitiesServices.getByTaskId)

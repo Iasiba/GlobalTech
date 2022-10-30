@@ -26,7 +26,7 @@ const getById = (req, res) => {
 const getByTaskId = (req, res) => {
   const id = req.params.id;
   activitiesController
-    .getByActivityId(id)
+    .getByTaskId(id)
     .then((response) => {
       res.status(200).json(response);
     })

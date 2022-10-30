@@ -53,7 +53,7 @@ const create = (req, res) => {
       },
     });
   } else {
-    materialController.create(data,req.params.id)
+    materialController.create(data,req.params.id,req.user.id)
       .then((response) => {
         res.status(201).json({
           message: `material created succesfully with id: ${response.id}`,

@@ -34,9 +34,18 @@ const getById = async (id) => {
   return res;
 }
 
-const getByActivityId = async (taskId) => {
+const getByTaskId = async (taskId) => {
   const res = await Activities.findAll({
-    where: { taskId }
+    where: { taskId },
+    include: [
+      {
+        model: Tasks,
+        include: [{model: Rooms,include:Projects}]
+      },
+      {
+        model:Users
+      }
+    ]
   });
   return res;
 }
@@ -77,7 +86,7 @@ module.exports = {
   getAll,
   create,
   getById,
-  getByActivityId,
+  getByTaskId,
   edit,
   remove
 }
