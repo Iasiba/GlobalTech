@@ -22,6 +22,17 @@ const getById = (req, res) => {
       res.status(404).json({ message: `backup with id ${id} not exist` });
     });
 }
+const getByProjectId = (req, res) => {
+  const id = req.params.id;
+  backupControllers
+    .getByProjectId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `backup with id ${id} not exist` });
+    });
+}
 
 const create = (req, res) => {
   const data = req.body;
@@ -96,6 +107,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByProjectId,
   remove,
   edit
 };

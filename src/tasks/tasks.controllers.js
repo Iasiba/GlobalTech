@@ -75,7 +75,6 @@ const getByRoomId = async (roomId) => {
 }
 
 const create = async (data, userId,roomId) => {
-  console.log(data,"    ", userId)
   const newTask = await tasks.create({
     id: uuid.v4(),
     userId: userId,
@@ -83,6 +82,8 @@ const create = async (data, userId,roomId) => {
     material:data.material,
     description: data.description,
     roomId: roomId,
+    isfinished:data.isfinished,
+    iscanceled:data.iscanceled,
     executionDate: data.executionDate
   })
   return newTask;

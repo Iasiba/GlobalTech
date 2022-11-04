@@ -31,6 +31,21 @@ const getById = async (id) => {
     ]
   });
   return res;
+}
+
+const getByProjectId = async (projectId) => {
+  const res = await Backup.findAll({
+    where: { projectId },
+    include: [
+      {
+        model: Users
+      },
+      {
+        model: Projects
+      }
+    ]
+  });
+  return res;
 };
 
 const create = async (data,userId) => {
@@ -76,6 +91,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByProjectId,
   edit,
   remove
 }

@@ -35,6 +35,18 @@ const getByInventoryId = (req, res) => {
     });
 }
 
+const getByProjectId = (req, res) => {
+  const id = req.params.id;
+  materialController
+    .getByProjectId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `material with projectId ${id} not exist` });
+    });
+}
+
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
@@ -103,6 +115,7 @@ module.exports = {
   create,
   getById,
   getByInventoryId,
+  getByProjectId,
   remove,
   edit
 }

@@ -42,7 +42,35 @@ const getById = async (id) => {
 
 const getByInventoryId = async (inventoryId) => {
   const res = await Materials.findAll({
-    where: { inventoryId }
+    where: { inventoryId },    
+    include: [
+      {
+        model: Projects
+      },
+      {
+        model: Users
+      },
+      {
+        model: Inventories
+      }
+    ]
+  });
+  return res;
+}
+const getByProjectId = async (projectId) => {
+  const res = await Materials.findAll({
+    where: { projectId },
+    include: [
+      {
+        model: Projects
+      },
+      {
+        model: Users
+      },
+      {
+        model: Inventories
+      }
+    ]
   });
   return res;
 }
@@ -93,6 +121,7 @@ module.exports = {
   create,
   getById,
   getByInventoryId,
+  getByProjectId,
   edit,
   remove
 }
