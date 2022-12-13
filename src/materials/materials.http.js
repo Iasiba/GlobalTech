@@ -11,6 +11,17 @@ const getAll = (req, res) => {
     });
 }
 
+const getPendings= (req, res) => {
+  materialController
+    .getPendigs()
+    .then((response) => {
+      res.status(200).json({ items: response.length, materials: response });
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+}
+
 const getById = (req, res) => {
   const id = req.params.id;
   materialController
@@ -22,7 +33,17 @@ const getById = (req, res) => {
       res.status(404).json({ message: `material with id ${id} not exist` });
     });
 }
-
+const getByUserId = (req, res) => {
+  const id = req.user.id;
+  materialController
+    .getByUserId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `material with userId ${id} not exist` });
+    });
+}
 const getByInventoryId = (req, res) => {
   const id = req.params.id;
   materialController
@@ -114,8 +135,10 @@ module.exports = {
   getAll,
   create,
   getById,
+  getPendings,
   getByInventoryId,
   getByProjectId,
+  getByUserId,
   remove,
   edit
 }

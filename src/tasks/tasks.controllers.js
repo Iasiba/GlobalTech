@@ -1,6 +1,7 @@
 const uuid = require("uuid");
 
-const tasks = require("../models/tasks.model");
+const tasks = require("../models/tasks.model")
+const TaskImages = require("../models/tasksImages.models")
 const Rooms = require("../models/rooms.model");
 const Users = require("../models/user.model");
 const Activities = require("../models/activities.model");
@@ -18,6 +19,9 @@ const getAll = async () => {
       },
       {
         model: Activities
+      },
+      {
+        model: TaskImages
       }
     ],
   })
@@ -37,6 +41,9 @@ const getById = async (id) => {
       },
       {
         model: Activities
+      },
+      {
+        model: TaskImages
       }
     ],
   });
@@ -46,11 +53,21 @@ const getById = async (id) => {
 const getByUser = async (userId) => {
   const res = await tasks.findAll({
     where: { userId: userId },
-    include: [
+    include: [   
       {
         model: Rooms
+        ,include: Projects
+      },
+      {
+        model: Users
+      },
+      {
+        model: Activities
+      },
+      {
+        model: TaskImages
       }
-    ],
+    ]
   });
   return res;
 }
@@ -68,6 +85,9 @@ const getByRoomId = async (roomId) => {
       },
       {
         model: Activities
+      },
+      {
+        model: TaskImages
       }
     ]
   });

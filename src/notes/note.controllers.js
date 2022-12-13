@@ -21,6 +21,18 @@ const getById = async (id) => {
   return res;
 };
 
+const getByUserId = async (userId) => {
+  const res = await Note.findAll({
+    where: { userId },
+    include: [
+      {
+        model: Users
+      }
+    ]
+  });
+  return res;
+};
+
 const create = async (data,userId) => {
   const newNote = await Note.create({
     id: uuid.v4(),
@@ -60,6 +72,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByUserId,
   edit,
   remove
 }

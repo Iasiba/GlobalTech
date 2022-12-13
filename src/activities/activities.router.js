@@ -7,7 +7,7 @@ const activitiesServices = require('./activities.http')
 
 
 router.route('/') //* /api/v1/activities
-    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,activitiesServices.getAll)
+    .get(passport.authenticate('jwt', {session: false})/*, roleAdminMiddleware*/,activitiesServices.getAll)
     
 router.route('/:id')
     .get(passport.authenticate('jwt', {session: false}), activitiesServices.getById)

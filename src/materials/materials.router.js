@@ -9,6 +9,10 @@ const materialServices = require('./materials.http')
 router.route('/') //* /api/v1/materials
     .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,materialServices.getAll)
 
+router.route("/pendings")
+    .get(passport.authenticate('jwt', {session: false}), roleAdminMiddleware,materialServices.getPendings)
+
+
 router.route('/:id')
     .get(passport.authenticate('jwt', {session: false}), materialServices.getById)
     .put(passport.authenticate('jwt', {session: false}), materialServices.edit)

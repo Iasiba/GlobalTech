@@ -22,6 +22,17 @@ const getById = (req, res) => {
       res.status(404).json({ message: `note with id ${id} not exist` });
     });
 }
+const getByUserId = (req, res) => {
+  const id = req.user.id;
+  noteControllers
+    .getByUserId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `note with userId ${id} not exist` });
+    });
+}
 
 const create = (req, res) => {
   const data = req.body;
@@ -88,6 +99,7 @@ module.exports = {
   getAll,
   create,
   getById,
+  getByUserId,
   remove,
   edit
 };

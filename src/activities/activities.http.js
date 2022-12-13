@@ -23,6 +23,18 @@ const getById = (req, res) => {
     });
 }
 
+const getByUserId = (req, res) => {
+  const id = req.user.id;
+  activitiesController
+    .getByUserId(id)
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: `activities with userId ${id} not exist` });
+    });
+}
+
 const getByTaskId = (req, res) => {
   const id = req.params.id;
   activitiesController
@@ -95,11 +107,26 @@ const remove = (req, res) => {
       }
     })
 }
+const removeByTaskId = (req, res) => {
+  const id = req.params.id
+  activitiesController.removeByTaskId(id)
+    .then((response) => {
+      if(response){
+        res.status(204).json({message:response})
+      }else{
+        res.status(400).json({
+          message: 'Invalid ID'
+        })
+      }
+    })
+}
 module.exports = {
   getAll,
   create,
   getById,
   getByTaskId,
+  getByUserId,
   remove,
-  edit
+  edit,
+  removeByTaskId
 }

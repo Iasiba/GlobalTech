@@ -16,15 +16,6 @@ const Activities = db.define('activities', {
         allowNull: false,
         type: DataTypes.STRING
     },
-    isfinished: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    },
-    iscanceled: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    },
     createdAt: {
         type: DataTypes.DATEONLY
     },
