@@ -8,8 +8,8 @@ const getAll = async () => {
   const res = await Inventories.findAll({
     include: [
       {
-        model: Materials
-       ,include:Projects
+        model: Materials,
+        include:[Projects ,Inventories]
       }
     ],
   })
