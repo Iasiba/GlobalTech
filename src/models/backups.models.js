@@ -20,11 +20,11 @@ const Backup = db.define('backup', {
         type: DataTypes.STRING
     },
     backup: {
-        allowNull: false,
+        //allowNull: false,
         type: DataTypes.STRING,
-        validate: {
+        /*validate: {
             isUrl: true,
-        }
+        }*/
     },
     userId: {
         type: DataTypes.UUID,

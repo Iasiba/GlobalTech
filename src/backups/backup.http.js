@@ -37,23 +37,22 @@ const getByProjectId = (req, res) => {
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
-    return res.status(400).json({ message: "Missing Data"});
+    return res.status(400).json({ message: "Missing Data" });
   } else if (
-    !data.software||
-    !data.version||
-    !data.name||
-    !data.backup||
+    !data.software ||
+    !data.version ||
+    !data.name ||
     !data.projectId
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        software:"text",
-        version:"text",
-        name:"text",
-        backup:"url",
-        userId:"UUID",
-        projectId:"UUID"
+        software: "text",
+        version: "text",
+        name: "text",
+        backup: "url",
+        userId: "UUID",
+        projectId: "UUID"
       },
     });
   } else {
@@ -65,18 +64,31 @@ const create = (req, res) => {
         });
       })
       .catch(err => {
-        res.status(400).json({message: err.errors[0].message})
-      }) 
+        res.status(400).json({ message: err.errors[0].message })
+      })
   }
+};
+const upload = (req, res) => {
+  const backupId = req.params.id;
+  console.log(backupId,'backupid')
+  //const backupPath = req.hostname + ':8000' + '/api/v1/uploads/' + req.file.filename
+  const backupPath = req.hostname + ':8000' + '/api/v1/uploads/' + req.file.filename
+  backupControllers.upload(backupId, backupPath)
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(400).json({ message: err.errors[0].message })
+    })
 };
 
 const remove = (req, res) => {
   const id = req.params.id;
   backupControllers.remove(id)
     .then((response) => {
-      if(response){
-        res.status(204).json({message:response})
-      }else{
+      if (response) {
+        res.status(204).json({ message: response })
+      } else {
         res.status(400).json({
           message: 'Invalid ID'
         })
@@ -98,7 +110,7 @@ const edit = (req, res) => {
         })
       })
       .catch((err) => {
-        res.status(400).json({message: err.errors[0].message})
+        res.status(400).json({ message: err.errors[0].message })
       })
   }
 };
@@ -109,5 +121,6 @@ module.exports = {
   getById,
   getByProjectId,
   remove,
-  edit
+  edit,
+  upload
 };

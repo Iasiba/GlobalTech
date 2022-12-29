@@ -12,8 +12,6 @@ const upload=()=>{
     })
     return multer({storage}) 
 }
-
-
 /*
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

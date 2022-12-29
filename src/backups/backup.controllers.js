@@ -54,7 +54,7 @@ const create = async (data,userId) => {
     software:data.software,
     version:data.version||"",
     name:data.name,
-    backup:data.backup,
+    backup:data.backup,//||"https://www.youtube.com/watch?v=DIexYmyB1zk",//https://www.youtube.com/watch?v=DIexYmyB1zk
     userId:userId,
     projectId:data.projectId,
     date:data.date
@@ -87,11 +87,24 @@ const remove = async (id) => {
   return backupDeleted;
 };
 
+const upload = async (backupId, backupPath) => {
+  console.log(backupId,backupPath,'xxxxxxxxxxxxxxx')
+  const data = await Backup.update(
+    {
+      backup: backupPath,
+    },
+    {
+      where: { id: backupId },
+    }
+  );
+  return data;
+}
 module.exports = {
   getAll,
   create,
   getById,
   getByProjectId,
   edit,
-  remove
+  remove,
+  upload
 }

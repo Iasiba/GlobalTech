@@ -1,0 +1,69 @@
+{
+  "message": "Tus credenciales son correctas",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0MWZjNzhhLTJhYzctNDE0ZS04MWQwLTY3MjA0MWYzODk2ZiIsImVtYWlsIjoiaWFzaWJhQGdtYWlsLmNvbSIsInJvbCI6Im5vcm1hbCIsImlhdCI6MTY2MTY2Mzg1Mn0.a56wZpx6QAXMurLCf1mrIU78zu7J-A7riYCEqdrYPzM"
+}
+
+
+
+https://academlo.notion.site/e1f9afe4d14f41b4829316e8e491dc9b?v=afa35b4c0feb41eab657cf2b1bc6318b
+
+https://us02web.zoom.us/j/86751384549?pwd=VFJXK3hhb0lPNHNIWkpkNm1lbGVHZz09
+
+
+respaldar
+https://drive.google.com/drive/folders/1LWVPuTJYMqvul77xBpwcnqLCkT_SSsdi?fbclid=IwAR21pMUquXiAFZeqM2xRdrerP4DDRIPhVHJmThDNnS6dmck_DnQZcexPJ_E
+
+cursos
+https://drive.google.com/drive/folders/0B8h2BU1XAdYcSUxZRi02azF6OHM?resourcekey=0-RurUmaV5Qvr3BSnh9MTQZw
+
+importacion china
+https://mega.nz/folder/s9ZEEBjY#DcYDq-2rWgwgoimuakcEdg/folder/sxwGBJzZ
+
+
+2.5tb
+https://mega.nz/folder/eRo2TCiK#3m-NvkIOO5EPxYm_aLTa8w
+
+4tb
+https://mega.nz/folder/s9ZEEBjY#DcYDq-2rWgwgoimuakcEdg
+
+
+
+
+
+
+
+insert into accommodations (
+    id ,
+   title,
+    description ,
+    guests ,
+    rooms ,
+    beds ,
+    bathrooms,
+    price ,
+    score ,
+    commision ,
+	host_id,
+	place_id,
+	"placeId",
+	"userId" ,
+	"createdAt" ,
+    "updatedAt"
+ ) values (
+  '7e5fc196-8f45-46d2-bb2b-2f8b95340d50',
+  'premium - vistas 360 ciudad (alberca y gym)',
+  'asd',
+  6,
+  3,
+  3,
+  4.5,
+  1536.00,
+  0.00,
+  150.00,
+  '74cd6011-7e76-4d6d-b25b-1d6e4182ec2f',
+  '9c0412b6-7d56-4347-8fbe-5455e8a42438',
+    '9c0412b6-7d56-4347-8fbe-5455e8a42438',
+  '74cd6011-7e76-4d6d-b25b-1d6e4182ec2f',
+'2022-09-08 20:33:13.827 -0500',
+'2022-09-08 20:33:13.827 -0500'
+)
