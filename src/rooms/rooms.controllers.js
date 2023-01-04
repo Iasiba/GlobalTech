@@ -33,7 +33,15 @@ const getById = async (id) => {
 }
 const getByProjectId = async (projectId) => {
   const res = await rooms.findAll({
-    where: { projectId : projectId }
+    where: { projectId : projectId },
+    include:[
+      {
+        model: project
+      },
+      {
+        model: Tasks
+      }
+    ]
   })
   return res;
 }

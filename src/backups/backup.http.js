@@ -57,6 +57,7 @@ const create = (req, res) => {
     });
   } else {
     backupControllers.create(data, req.user.id)
+    console.log(data,'backupsss')
       .then((response) => {
         res.status(201).json({
           message: `backup created succesfully with id: ${response.id}`,

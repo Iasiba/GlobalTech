@@ -49,6 +49,7 @@ const getByProjectId = async (projectId) => {
 };
 
 const create = async (data,userId) => {
+  console.log(data,'datosss',userId)
   const newBackup = await Backup.create({
     id: uuid.v4(),
     software:data.software,
