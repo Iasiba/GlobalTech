@@ -4,7 +4,7 @@ const Accommodations = require("../models/acomodations.model");
 const Places = require("../models/places.model");
 const Reservations = require("../models/reservations.model");
 */
-const Users = require("../models/user.model")
+const Users = require("../models/users.model")
 const UsersImages = require("../models/users.images")
 const Roles = require("../models/roles.model")
 const Projects = require("../models/projects.model")
@@ -301,6 +301,7 @@ const generateData = async () => {
     {
       id: "6ea3be59-99a4-4136-9047-9c7f0825518e",
       name: "TEXT",
+      model:"xxx",
       amount: 555,
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
@@ -313,6 +314,7 @@ const generateData = async () => {
       id: "7909f627-f871-4b8f-9c8c-9ec27abb5f63",
       name: "TEXT",
       amount: 555,
+      model:"xxx",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
       projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
@@ -324,9 +326,10 @@ const generateData = async () => {
       id: "001285b2-0514-4a41-b258-0edf3900c1c5",
       name: "TEXT",
       amount: 555,
+      model:"xxx",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
-      projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
+      //projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
       returned: false,
       createdAt: "2022-10-07T03:13:29.292Z",
       updatedAt: "2022-10-07T03:13:29.292Z"

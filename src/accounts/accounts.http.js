@@ -41,7 +41,6 @@ const create = (req, res) => {
   if (!data) {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
-    !data.owner||
     !data.user||
     !data.password||
     !data.software
@@ -49,7 +48,6 @@ const create = (req, res) => {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        "owner":"text",
         "user":"text",
         "password":"text",
         "software":"text"

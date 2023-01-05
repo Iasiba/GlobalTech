@@ -8,7 +8,18 @@ const Material = db.define('materials', {
         type: DataTypes.UUID,
         allowNull: false
     },
+    inventoryId:{
+        type:DataTypes.UUID,
+        allowNull:false
+    },
+    projectId: {
+        type: DataTypes.UUID
+    },
     name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    model: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -21,13 +32,17 @@ const Material = db.define('materials', {
         type: DataTypes.UUID,
         allowNull: false
     },
-    inventoryId:{
-        type:DataTypes.UUID,
-        allowNull:false
+    damaged: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
-    projectId: {
-        type: DataTypes.UUID,
-        allowNull: false
+    installed:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    delivered: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
     returned: {
         type: DataTypes.BOOLEAN,

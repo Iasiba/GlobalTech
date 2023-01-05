@@ -2,7 +2,7 @@ const uuid = require("uuid");
 const { hashPassword } = require("../utils/crypt");
 
 const userImages = require("../models/users.images");
-const users= require("../models/user.model")
+const users= require("../models/users.model")
 
 const getAll = async () => {
   const res = await userImages.findAll({

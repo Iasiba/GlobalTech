@@ -26,30 +26,22 @@ const getById = (req, res) => {
 
 const register = (req, res) => {
   const data = req.body;
+  console.log(data)
   if (!data) {
     return res.status(400).json({ message: "Missing Data" });
   } else if (
     !data.first_name ||
-    !data.last_name ||
     !data.email ||
     !data.password ||
-    !data.birthday_date ||
-    !data.country
+    !data.roleId
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
         "first_name": "string",
-        "last_name": "string",
         "email": "examl@examle.com",
-        "birthday_date": "2000/10/22",
-        "country": "string",
-        "gender": "male",
-        "phone": "1234567890",
         "password": "1234",
-        "dni": "dsdsfs",
-        "address": "xxxx",
-        "profile_image": "asd.com"
+        "roleId": "roleId",
       },
     });
   } else {

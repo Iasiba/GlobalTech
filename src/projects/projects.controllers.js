@@ -1,7 +1,7 @@
 const uuid = require("uuid");
 
 const Projects = require("../models/projects.model");
-const Users = require ("../models/user.model")
+const Users = require ("../models/users.model")
 const Rooms = require("../models/rooms.model")
 const Accounts = require("../models/accounts.model")
 
@@ -45,14 +45,14 @@ const getById = async (id) => {
 const create = async (data, userId) => {
   const newProject = await Projects.create({
     id: uuid.v4(),
-    name:data.name,
     userId: userId,
+    name:data.name,
     address:data.address,
     coordinates:data.coordinates,
-    reference:data.reference,
-    city:data.city,
-    state:data.state,
-    country:data.country,
+    reference:data.reference||'',
+    city:data.city||'Monterrey',
+    state:data.state||'Nuevo Leon',
+    country:data.country||'Mexico',
     plane:data.plane
   })
   return newProject;

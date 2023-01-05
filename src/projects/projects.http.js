@@ -30,22 +30,14 @@ const create = (req, res) => {
   } else if (
     !data.name||
     !data.address||
-    !data.coordinates||
-    !data.reference||
-    !data.city||
-    !data.state||
-    !data.country
+    !data.coordinates
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
         "name":"TEXT",
         "address":"TEXT",
-        "coordinates":"TEXT",
-        "reference":"TEXT",
-        "city":"TEXT",
-        "state":"TEXT",
-        "country":"TEXT"
+        "coordinates":"TEXT"
       },
     });
   } else {

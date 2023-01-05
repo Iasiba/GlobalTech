@@ -1,5 +1,5 @@
-const Users = require('./user.model')
 const Roles = require('./roles.model')
+const Users = require('./users.model')
 const Projects = require('./projects.model')
 const Tasks = require('./tasks.model')
 const TaskImages = require('./tasksImages.models')

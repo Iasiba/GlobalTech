@@ -53,13 +53,15 @@ const create = (req, res) => {
     return res.status(400).json({ message: "Missing Data"});
   } else if (
     !data.description||
-    !data.executionDate
+    !data.executionDate||
+    !data.roomId
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
         "description":"description",
-        "executionDate":"executionDate"
+        "executionDate":"executionDate",
+        "roomId":"roomId"
       },
     });
   } else {

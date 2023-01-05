@@ -13,8 +13,7 @@ const Accounts = db.define('accounts', {
         allowNull: false
     },
     owner: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING
     },
     user: {
         type: DataTypes.STRING,

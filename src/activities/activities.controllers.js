@@ -4,7 +4,7 @@ const Activities = require("../models/activities.model");
 const Tasks = require("../models/tasks.model")
 const Projects = require("../models/projects.model");
 const Rooms = require("../models/rooms.model");
-const Users = require("../models/user.model")
+const Users = require("../models/users.model")
 
 const getAll = async () => {
   const res = await Activities.findAll({

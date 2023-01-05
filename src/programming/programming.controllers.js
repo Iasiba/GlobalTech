@@ -1,7 +1,7 @@
 const uuid = require("uuid");
 
 const Programming = require("../models/programming.models");
-const Users = require("../models/user.model")
+const Users = require("../models/users.model")
 
 const getAll = async () => {
   const res = await Programming.findAll({

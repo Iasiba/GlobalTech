@@ -1,7 +1,7 @@
 const uuid = require("uuid");
 
 const Materials = require("../models/materials.model");
-const Users = require("../models/user.model")
+const Users = require("../models/users.model")
 const Inventories = require("../models/inventories.model");
 const Projects = require("../models/projects.model")
 
@@ -9,10 +9,10 @@ const getAll = async () => {
   const res = await Materials.findAll({
     include: [
       {
-        model: Projects
+        model: Users
       },
       {
-        model: Users
+        model: Projects
       },
       {
         model: Inventories
@@ -26,10 +26,10 @@ const getPendigs = async () => {
     where: { onHold: true },
     include: [
       {
-        model: Projects
+        model: Users
       },
       {
-        model: Users
+        model: Projects
       },
       {
         model: Inventories
@@ -43,10 +43,10 @@ const getById = async (id) => {
     where: { id },
     include: [
       {
-        model: Projects
+        model: Users
       },
       {
-        model: Users
+        model: Projects
       },
       {
         model: Inventories
@@ -60,10 +60,10 @@ const getByUserId = async (userId) => {
     where: { userId },
     include: [
       {
-        model: Projects
+        model: Users
       },
       {
-        model: Users
+        model: Projects
       },
       {
         model: Inventories
@@ -78,10 +78,10 @@ const getByInventoryId = async (inventoryId) => {
     where: { inventoryId },
     include: [
       {
-        model: Projects
+        model: Users
       },
       {
-        model: Users
+        model: Projects
       },
       {
         model: Inventories
@@ -95,10 +95,10 @@ const getByProjectId = async (projectId) => {
     where: { projectId },
     include: [
       {
-        model: Projects
+        model: Users
       },
       {
-        model: Users
+        model: Projects
       },
       {
         model: Inventories
@@ -109,11 +109,16 @@ const getByProjectId = async (projectId) => {
 }
 
 const create = async (data, inventoryId, userId) => {
+  console.log(data,inventoryId)
   const newMaterial = await Materials.create({
     id: uuid.v4(),
-    onHold: data.onHold ? data.onHold : false,
-    returned: data.returned ? data.returned : false,
+    onHold: data.onHold || false,
+    installed: data.installed || false,
+    returned: data.returned || false,
+    damaged: data.damaged || false,
+    delivered: data.delivered || false,
     name: data.name,
+    model:data.model,
     amount: data.amount,
     userId: userId,
     inventoryId: inventoryId,

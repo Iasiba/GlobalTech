@@ -12,6 +12,10 @@ const Activities = db.define('activities', {
         type: DataTypes.UUID,
         allowNull: false
     },
+    taskId: {
+        type: DataTypes.UUID,
+        allowNull: false
+    },
     description: {
         allowNull: false,
         type: DataTypes.STRING

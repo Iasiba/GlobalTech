@@ -8,13 +8,13 @@ const Rooms = db.define('rooms', {
         type: DataTypes.UUID,
         allowNull: false,
     },
-    name: {
-        allowNull: false,
-        type: DataTypes.STRING
-    },
     projectId: {
         type: DataTypes.UUID,
         allowNull: false,
+    },
+    name: {
+        allowNull: false,
+        type: DataTypes.STRING
     },
     createdAt: {
         type: DataTypes.DATE

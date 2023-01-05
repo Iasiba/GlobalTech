@@ -1,4 +1,4 @@
-const users=require("../models/user.model")
+const users=require("../models/users.model")
 const roleAdminMiddleware = async (req, res, next) => {
     /*const user= await users.findOne(
         {where : {id:req.user.id}}

@@ -42,12 +42,12 @@ const create = async (data, projectId,creatorId) => {
   const newAccount = await Accounts.create({
     id: uuid.v4(),
     userId:creatorId,
-    owner: data.owner,
+    projectId: projectId,
+    owner: data.owner||'',
     user: data.user,
     password: data.password,
-    projectId: projectId,
-    directionIp: data.directionIp,
-    software: data.software
+    software: data.software,
+    directionIp: data.directionIp||'0.0.0.0'
   })
   return newAccount;
 }

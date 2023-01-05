@@ -3,7 +3,7 @@ const uuid = require("uuid");
 const tasks = require("../models/tasks.model")
 const TaskImages = require("../models/tasksImages.models")
 const Rooms = require("../models/rooms.model");
-const Users = require("../models/user.model");
+const Users = require("../models/users.model");
 const Activities = require("../models/activities.model");
 const Projects = require("../models/projects.model")
 
@@ -98,10 +98,10 @@ const create = async (data, userId,roomId) => {
   const newTask = await tasks.create({
     id: uuid.v4(),
     userId: userId,
-    observation:data.observation,
-    material:data.material,
-    description: data.description,
     roomId: roomId,
+    description: data.description,
+    observation:data.observation||'',
+    material:data.material||'',
     isfinished:data.isfinished,
     iscanceled:data.iscanceled,
     executionDate: data.executionDate

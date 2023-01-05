@@ -14,9 +14,9 @@ const Projects = db.define('projects', {
     },
     plane:{
         type: DataTypes.STRING,
-        validate: {
+/*        validate: {
             isUrl: true,
-        }
+        }*/
     },
     name: {
         allowNull: false,

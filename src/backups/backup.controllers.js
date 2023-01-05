@@ -2,7 +2,7 @@ const uuid = require("uuid");
 
 const Backup = require("../models/backups.models");
 const Projects = require("../models/projects.model");
-const Users = require("../models/user.model")
+const Users = require("../models/users.model")
 
 const getAll = async () => {
   const res = await Backup.findAll({

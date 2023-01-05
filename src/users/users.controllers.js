@@ -1,7 +1,7 @@
 const uuid = require("uuid");
 const { hashPassword } = require("../utils/crypt");
 
-const Users = require("../models/user.model");
+const Users = require("../models/users.model");
 const Roles = require("../models/roles.model");
 const Projects = require("../models/projects.model");
 const Tasks = require("../models/tasks.model")
@@ -69,10 +69,10 @@ const createUser = async (data) => {
     birthdayDate: data.birthday_date,
     dni: data.dni,
     address: data.address,
-    profileImage: data.profile_image,
+    profileImage: data.profile_image||'https://i.pinimg.com/564x/5d/ea/77/5dea777ae437ec5c2d5d7d8a4f6af123.jpg',
     status: "active",
     verified: false,
-    roleId: "fef3a08d-2cec-4728-9745-7cbd2b37e557"
+    roleId: data.roleId
   });
   // const newUserWithSpreadOperator =  await Users.create({
   //   ...data,

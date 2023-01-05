@@ -13,7 +13,6 @@ const Users = db.define('users', {
         type: DataTypes.STRING
     },
     lastName: {
-        allowNull: false,
         type: DataTypes.STRING,
     },
     gender: {
@@ -33,7 +32,6 @@ const Users = db.define('users', {
         defaultValue:"12345678"
     },
     phone: {
-        allowNull: false,
         type: DataTypes.STRING,
     },
     birthdayDate: {

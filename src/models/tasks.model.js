@@ -12,17 +12,19 @@ const Tasks = db.define('tasks', {
         allowNull: false,
         type: DataTypes.UUID
     },
+    roomId: {
+        allowNull: false,
+        type: DataTypes.UUID
+    },
     description: {
         allowNull: false,
         type: DataTypes.STRING
     },
     observation: {
-        allowNull: false,
         type: DataTypes.STRING,
         defaultValue:""
     },
     material: {
-        allowNull: false,
         type: DataTypes.STRING,
         defaultValue:"ninguno"
     }
@@ -31,10 +33,6 @@ const Tasks = db.define('tasks', {
         allowNull: false,
         type: DataTypes.UUID
     }*/,
-    roomId: {
-        allowNull: false,
-        type: DataTypes.UUID
-    },
     executionDate: {
         allowNull: false,
         type: DataTypes.DATEONLY,
