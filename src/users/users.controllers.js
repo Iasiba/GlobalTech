@@ -56,23 +56,22 @@ const getUserById = async (id) => {
 }
 
 const createUser = async (data) => {
-  console.log("entro a crear users")
-  
+  console.log(data,"entro a crear users")
   const newUser = await Users.create({
     id: uuid.v4(),
     firstName: data.first_name,
-    lastName: data.last_name,
-    gender: data.gender,
     email: data.email,
     password: hashPassword(data.password),
-    phone: data.phone,
-    birthdayDate: data.birthday_date,
-    dni: data.dni,
-    address: data.address,
-    profileImage: data.profile_image||'https://i.pinimg.com/564x/5d/ea/77/5dea777ae437ec5c2d5d7d8a4f6af123.jpg',
+    roleId: data.roleId,
+    lastName: data.last_name||'',
+    gender: data.gender||'',
+    phone: data.phone||'',
+    birthdayDate: data.birthday_date||"2000/01/01",
+    dni: data.dni||'',
+    address: data.address||'',
+    profileImage: data.profile_image ||'https://www.youtube.com/watch?v=hnCZmEOUvcY',
     status: "active",
     verified: false,
-    roleId: data.roleId
   });
   // const newUserWithSpreadOperator =  await Users.create({
   //   ...data,

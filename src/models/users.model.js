@@ -45,10 +45,10 @@ const Users = db.define('users', {
     },
     profileImage: {
         type: DataTypes.STRING,
-        validate: {
+       /* validate: {
             isUrl: true
         },
-        field: 'profile_image'
+        field: 'profile_image'*/
     },
     taskId: {
         type: DataTypes.UUID

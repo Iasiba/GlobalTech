@@ -3,13 +3,14 @@ const uuid = require("uuid");
 const Inventories = require("../models/inventories.model")
 const Materials = require("../models/materials.model")
 const Projects = require("../models/projects.model")
+const Users = require("../models/users.model")
 
 const getAll = async () => {
   const res = await Inventories.findAll({
     include: [
       {
         model: Materials,
-        include:[Projects ,Inventories]
+        include:[Users,Projects ,Inventories]
       }
     ],
   })
@@ -21,7 +22,8 @@ const getById = async (id) => {
     where: { id },
     include: [
       {
-        model: Materials
+        model: Materials,
+        include:[Users,Projects ,Inventories]
       }
     ],
   });

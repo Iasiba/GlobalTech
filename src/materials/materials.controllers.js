@@ -79,13 +79,13 @@ const getByInventoryId = async (inventoryId) => {
     include: [
       {
         model: Users
-      },
+      }/*,
       {
         model: Projects
       },
       {
         model: Inventories
-      }
+      }*/
     ]
   });
   return res;
@@ -96,13 +96,13 @@ const getByProjectId = async (projectId) => {
     include: [
       {
         model: Users
-      },
+      }/*,
       {
         model: Projects
       },
       {
         model: Inventories
-      }
+      }*/
     ]
   });
   return res;
