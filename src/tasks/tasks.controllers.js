@@ -12,7 +12,7 @@ const getAll = async () => {
     include: [        //esto muestra usuario creador y habitacion a la que pertenece y  
       {
         model: Rooms
-        ,include: Projects
+        ,include: [{model:Projects,include:Rooms}]
       },
       {
         model: Users
@@ -34,7 +34,7 @@ const getById = async (id) => {
     include: [
       {
         model: Rooms
-        ,include: Projects
+        ,include: [{model:Projects,include:Rooms}]
       },
       {
         model: Users
@@ -56,7 +56,7 @@ const getByUser = async (userId) => {
     include: [   
       {
         model: Rooms
-        ,include: Projects
+        ,include: [{model:Projects,include:Rooms}]
       },
       {
         model: Users
@@ -78,7 +78,7 @@ const getByRoomId = async (roomId) => {
     include: [
       {
         model: Rooms
-        ,include: Projects
+        ,include: [{model:Projects,include:Rooms}]
       },
       {
         model: Users
