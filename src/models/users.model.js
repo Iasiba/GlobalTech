@@ -29,7 +29,7 @@ const Users = db.define('users', {
     password: {
         allowNull: false,
         type: DataTypes.STRING,
-        defaultValue:"12345678"
+        defaultValue: "12345678"
     },
     phone: {
         type: DataTypes.STRING,
@@ -45,10 +45,10 @@ const Users = db.define('users', {
     },
     profileImage: {
         type: DataTypes.STRING,
-       /* validate: {
-            isUrl: true
-        },
-        field: 'profile_image'*/
+        /* validate: {
+             isUrl: true
+         },
+         field: 'profile_image'*/
     },
     taskId: {
         type: DataTypes.UUID
@@ -71,16 +71,22 @@ const Users = db.define('users', {
     },
     createdAt: {
         type: DataTypes.DATE,
-        defaultValue:"2000/01/01",
+        defaultValue: "2000/01/01",
         allowNull: false
     },
     updatedAt: {
         type: DataTypes.DATE,
-        defaultValue:"2000/01/01",
+        defaultValue: "2000/01/01",
         allowNull: false
     },
     roleId: {
         allowNull: false,
+        type: DataTypes.UUID
+    },
+    materialListId: {
+        type: DataTypes.UUID
+    },
+    taskListId: {
         type: DataTypes.UUID
     }
 })

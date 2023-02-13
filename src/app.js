@@ -20,6 +20,7 @@ const activitiesRouter = require("./activities/activities.router").router
 const programmingRouter = require("./programming/programming.router").router
 const noteRouter = require ("./notes/note.router").router
 const backupRouter = require("./backups/backup.router").router
+const materialListRouter = require('./materialList/materialList.router').router
 
 const defaultData = require("./utils/defaultData")
 
@@ -80,7 +81,7 @@ app.use("/api/v1/materials",materialRouter)
 app.use("/api/v1/programmings",programmingRouter)
 app.use("/api/v1/notes",noteRouter)
 app.use("/api/v1/backups",backupRouter)
-
+app.use("/api/v1/materialList",materialListRouter)
 
 
 app.use("/api/v1/taskImages", taskImagesRouter)
