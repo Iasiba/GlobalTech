@@ -12,6 +12,9 @@ const Tasks = db.define('tasks', {
         allowNull: false,
         type: DataTypes.UUID
     },
+    taskListId: {
+        type: DataTypes.UUID
+    },
     roomId: {
         allowNull: false,
         type: DataTypes.UUID
@@ -22,11 +25,11 @@ const Tasks = db.define('tasks', {
     },
     observation: {
         type: DataTypes.STRING,
-        defaultValue:""
+        defaultValue: ""
     },
     material: {
         type: DataTypes.STRING,
-        defaultValue:"ninguno"
+        defaultValue: "ninguno"
     }
 /*    ,
     creatorId: {
@@ -36,7 +39,7 @@ const Tasks = db.define('tasks', {
     executionDate: {
         allowNull: false,
         type: DataTypes.DATEONLY,
-        defaultValue:"2000/01/01"//año/mes/dia
+        defaultValue: "2000/01/01"//año/mes/dia
     },
     isfinished: {
         type: DataTypes.BOOLEAN,
