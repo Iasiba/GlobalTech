@@ -12,9 +12,6 @@ const Tasks = db.define('tasks', {
         allowNull: false,
         type: DataTypes.UUID
     },
-    taskListId: {
-        type: DataTypes.UUID
-    },
     roomId: {
         allowNull: false,
         type: DataTypes.UUID
@@ -40,6 +37,10 @@ const Tasks = db.define('tasks', {
         allowNull: false,
         type: DataTypes.DATEONLY,
         defaultValue: "2000/01/01"//año/mes/dia
+    },
+    assigned: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
     isfinished: {
         type: DataTypes.BOOLEAN,

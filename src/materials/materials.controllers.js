@@ -4,6 +4,7 @@ const Materials = require("../models/materials.model");
 const Users = require("../models/users.model")
 const Inventories = require("../models/inventories.model");
 const Projects = require("../models/projects.model")
+const Rooms = require("../models/rooms.model")
 
 const getAll = async () => {
   const res = await Materials.findAll({
@@ -16,6 +17,9 @@ const getAll = async () => {
       },
       {
         model: Inventories
+      },
+      {
+        model:Rooms
       }
     ],
   })
@@ -33,6 +37,9 @@ const getPendigs = async () => {
       },
       {
         model: Inventories
+      },
+      {
+        model:Rooms
       }
     ],
   })
@@ -50,7 +57,11 @@ const getById = async (id) => {
       },
       {
         model: Inventories
+      },
+      {
+        model:Rooms
       }
+      
     ],
   });
   return res;
@@ -67,6 +78,9 @@ const getByUserId = async (userId) => {
       },
       {
         model: Inventories
+      },
+      {
+        model:Rooms
       }
     ]
   });

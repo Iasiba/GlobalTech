@@ -82,12 +82,6 @@ const Users = db.define('users', {
     roleId: {
         allowNull: false,
         type: DataTypes.UUID
-    },
-    materialListId: {
-        type: DataTypes.UUID
-    },
-    taskListId: {
-        type: DataTypes.UUID
     }
 })
 

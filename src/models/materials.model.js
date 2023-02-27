@@ -15,6 +15,9 @@ const Material = db.define('materials', {
     projectId: {
         type: DataTypes.UUID
     },
+    roomId: {
+        type: DataTypes.UUID
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -48,6 +51,10 @@ const Material = db.define('materials', {
         defaultValue: false
     },
     returned: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    assigned: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },

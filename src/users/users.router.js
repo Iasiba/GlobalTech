@@ -8,6 +8,7 @@ const userServices = require('./users.http')
 const activityServices = require("../activities/activities.http")
 const noteServices = require("../notes/note.http")
 const materialServices = require("../materials/materials.http")
+const taskListServices = require("../taskList/taskList.http")
 
 
 router.route('/') //* /api/v1/users/
@@ -26,18 +27,21 @@ router.route('/me/activities')
 
 router.route('/me/notes')
     .get(passport.authenticate('jwt', { session: false }), noteServices.getByUserId)
-    
+
 router.route('/me/materials')
     .get(passport.authenticate('jwt', { session: false }), materialServices.getByUserId)
 
+router.route('/me/taskList')
+    .get(passport.authenticate('jwt', { session: false }), taskListServices.getByUserId)
+
 router.route('/me/profile-img')
     .post(passport.authenticate('jwt', { session: false }), upload().single('profile_img'), userServices.postProfileImg)
-    /*  .post(
-            passport.authenticate('jwt', {session: false}), 
-            upload.single('profile_img'), 
-            userServices.postProfileImg
-        )
-    */
+/*  .post(
+        passport.authenticate('jwt', {session: false}), 
+        upload.single('profile_img'), 
+        userServices.postProfileImg
+    )
+*/
 router.route('/:id')
     .get(passport.authenticate('jwt', { session: false }), userServices.getById)
     .put(passport.authenticate('jwt', { session: false }), roleAdminMiddleware, userServices.edit)

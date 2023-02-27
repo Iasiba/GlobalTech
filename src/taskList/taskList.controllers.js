@@ -3,7 +3,8 @@ const uuid = require("uuid");
 const TaskList = require("../models/task.list.model");
 const Users = require("../models/users.model")
 const Tasks = require("../models/tasks.model")
-
+const Projects = require("../models/projects.model")
+const Rooms = require("../models/rooms.model")
 const getAll = async () => {
   const res = await TaskList.findAll({
     include: [
@@ -34,6 +35,7 @@ const getById = async (id) => {
 };
 
 const getByUserId = async (userId) => {
+  console.log("entro", userId)
   const res = await TaskList.findAll({
     where: { userId },
     include: [
@@ -42,6 +44,10 @@ const getByUserId = async (userId) => {
       },
       {
         model: Tasks
+        , include: [{
+          model: Rooms
+          , include: [{ model: Projects, include: Rooms }]
+        }]
       }
     ]
   });

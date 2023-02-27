@@ -24,16 +24,23 @@ const MaterialList = require('./material.list.model')
 
 const initModels = () => {
     //  TaskList
+    TaskList.belongsTo(Users)
+    Users.hasMany(TaskList)
+    TaskList.belongsTo(Tasks)
+    Tasks.hasMany(TaskList)
+    /*
     Users.belongsTo(TaskList)
     TaskList.hasMany(Users)
     Tasks.belongsTo(TaskList)
     TaskList.hasMany(Tasks)
-    //  MaterialList
+    */
+    //  MaterialList este no se ocupa no es necesario
+    /*
     Users.belongsTo(MaterialList)
     MaterialList.hasMany(Users)
     Materials.belongsTo(MaterialList)
     MaterialList.hasMany(Materials)
-
+    */
     //? Users <- Roles 
     Users.belongsTo(Roles);
     //-Roles.hasOne(Users);
@@ -99,6 +106,9 @@ const initModels = () => {
 
     Materials.belongsTo(Projects)
     Projects.hasMany(Materials)
+
+    Materials.belongsTo(Rooms)
+    Rooms.hasMany(Materials)
 
     Materials.belongsTo(Inventory)
     Inventory.hasMany(Materials)

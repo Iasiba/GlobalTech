@@ -5,6 +5,7 @@ const Users = require("../models/users.model");
 const Roles = require("../models/roles.model");
 const Projects = require("../models/projects.model");
 const Tasks = require("../models/tasks.model")
+const TaskList = require("../models/task.list.model")
 
 const getAllUsers = async() => {
   const res= await Users.findAll({
@@ -20,6 +21,9 @@ const getAllUsers = async() => {
       },
       {
         model: Tasks
+      },
+      {
+        model: TaskList
       }
     ],
     attributes:{
@@ -45,6 +49,9 @@ const getUserById = async (id) => {
       },
       {
         model: Tasks
+      },
+      {
+        model: TaskList
       }
     ],
     attributes: {
