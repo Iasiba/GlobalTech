@@ -6,6 +6,7 @@ const Rooms = require("../models/rooms.model");
 const Users = require("../models/users.model");
 const Activities = require("../models/activities.model");
 const Projects = require("../models/projects.model")
+const TaskLists = require("../models/task.list.model")
 
 const getAll = async () => {
   const res = await tasks.findAll({
@@ -22,6 +23,9 @@ const getAll = async () => {
       },
       {
         model: TaskImages
+      },
+      {
+        model: TaskLists
       }
     ],
   })
@@ -44,6 +48,9 @@ const getById = async (id) => {
       },
       {
         model: TaskImages
+      },
+      {
+        model: TaskLists
       }
     ],
   });
@@ -66,6 +73,9 @@ const getByUser = async (userId) => {
       },
       {
         model: TaskImages
+      },
+      {
+        model: TaskLists
       }
     ]
   });
@@ -88,6 +98,9 @@ const getByRoomId = async (roomId) => {
       },
       {
         model: TaskImages
+      },
+      {
+        model: TaskLists
       }
     ]
   });

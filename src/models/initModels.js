@@ -26,8 +26,8 @@ const initModels = () => {
     //  TaskList
     TaskList.belongsTo(Users)
     Users.hasMany(TaskList)
-    TaskList.belongsTo(Tasks)
-    Tasks.hasMany(TaskList)
+    Tasks.belongsTo(TaskList)
+    TaskList.hasMany(Tasks)
     /*
     Users.belongsTo(TaskList)
     TaskList.hasMany(Users)
