@@ -11,9 +11,9 @@ const Tasks = db.define('tasks', {
     userId: {
         type: DataTypes.UUID
     },
-    taskListId: {
+    /*taskListId: {
         type: DataTypes.UUID
-    },
+    },*/
     roomId: {
         allowNull: false,
         type: DataTypes.UUID
