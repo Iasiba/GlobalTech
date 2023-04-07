@@ -5,6 +5,9 @@ const Users = require("../models/users.model")
 const Tasks = require("../models/tasks.model")
 const Projects = require("../models/projects.model")
 const Rooms = require("../models/rooms.model")
+const Activities = require("../models/activities.model")
+const TaskImages = require("../models/tasksImages.models")
+
 const getAll = async () => {
   const res = await TaskList.findAll({
     include: [
@@ -44,10 +47,27 @@ const getByUserId = async (userId) => {
       },
       {
         model: Tasks
-        , include: [{
+        , include: [        //esto muestra usuario creador y habitacion a la que pertenece y  
+        {
+          model: Rooms
+          ,include: [{model:Projects,include:Rooms}]
+        },
+        {
+          model: Users
+        },
+        {
+          model: Activities
+        },
+        {
+          model: TaskImages
+        },
+        {
+          model: TaskList
+        }
+      ]/*include: [{
           model: Rooms
           , include: [{ model: Projects, include: Rooms }]
-        }]
+        }]*/
       }
     ]
   });
