@@ -33,8 +33,8 @@ const getById = async (id) => {
 }
 const getByProjectId = async (projectId) => {
   const res = await rooms.findAll({
-    where: { projectId : projectId },
-    include:[
+    where: { projectId: projectId },
+    include: [
       {
         model: project
       },
@@ -45,7 +45,7 @@ const getByProjectId = async (projectId) => {
   })
   return res;
 }
-const create = async (data,projectId) => {
+const create = async (data, projectId) => {
   const newRoom = await rooms.create({
     id: uuid.v4(),
     name: data.name,
@@ -53,7 +53,7 @@ const create = async (data,projectId) => {
   })
   return newRoom;
 }
-const edit = async (id, data,userRol) => {
+const edit = async (id, data, userRol) => {
   let res = null
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await rooms.update(
@@ -65,11 +65,12 @@ const edit = async (id, data,userRol) => {
 };
 
 const remove = async (id) => {
-  const roomDeleted = await rooms.destroy({
+  let roomDeleted
+  roomDeleted = await rooms.destroy({
     where: {
       id: id,
     },
-  });
+  })
   return roomDeleted;
 };
 

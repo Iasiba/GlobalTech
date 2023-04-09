@@ -5,6 +5,7 @@ const TaskImages = require("../models/tasksImages.models")
 const Rooms = require("../models/rooms.model");
 const Users = require("../models/users.model");
 const Activities = require("../models/activities.model");
+const activityController = require("../activities/activities.controllers")
 const Projects = require("../models/projects.model")
 const TaskLists = require("../models/task.list.model")
 
@@ -13,7 +14,7 @@ const getAll = async () => {
     include: [        //esto muestra usuario creador y habitacion a la que pertenece y  
       {
         model: Rooms
-        ,include: [{model:Projects,include:Rooms}]
+        , include: [{ model: Projects, include: Rooms }]
       },
       {
         model: Users
@@ -38,7 +39,7 @@ const getById = async (id) => {
     include: [
       {
         model: Rooms
-        ,include: [{model:Projects,include:Rooms}]
+        , include: [{ model: Projects, include: Rooms }]
       },
       {
         model: Users
@@ -60,10 +61,10 @@ const getById = async (id) => {
 const getByUser = async (userId) => {
   const res = await tasks.findAll({
     where: { userId: userId },
-    include: [   
+    include: [
       {
         model: Rooms
-        ,include: [{model:Projects,include:Rooms}]
+        , include: [{ model: Projects, include: Rooms }]
       },
       {
         model: Users
@@ -88,7 +89,7 @@ const getByRoomId = async (roomId) => {
     include: [
       {
         model: Rooms
-        ,include: [{model:Projects,include:Rooms}]
+        , include: [{ model: Projects, include: Rooms }]
       },
       {
         model: Users
@@ -107,26 +108,26 @@ const getByRoomId = async (roomId) => {
   return res;
 }
 
-const create = async (data, userId,roomId) => {
+const create = async (data, userId, roomId) => {
   const newTask = await tasks.create({
     id: uuid.v4(),
     userId: userId,
     roomId: roomId,
     description: data.description,
-    observation:data.observation||'',
-    material:data.material||'',
-    isfinished:data.isfinished,
-    iscanceled:data.iscanceled,
+    observation: data.observation || '',
+    material: data.material || '',
+    isfinished: data.isfinished,
+    iscanceled: data.iscanceled,
     executionDate: data.executionDate
   })
   return newTask;
 }
 
-const edit = async (id, data,userId,userRol) => {
+const edit = async (id, data, userId, userRol) => {
   let res = null
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await tasks.update(
-      { userId,...data },
+      { userId, ...data },
       { where: { id: id } }
     )
   } else {
@@ -143,14 +144,28 @@ const edit = async (id, data,userId,userRol) => {
 }
 
 const remove = async (id) => {
-  const taskDeleted = await tasks.destroy({
-    where: {
-      id: id,
-    },
-  });
+  let taskDeleted
+  activityController.removeByTaskId(id)
+    .then(
+      //
+      taskDeleted = await tasks.destroy({
+        where: {
+          id: id,
+        },
+      })
+      //
+    )
+
   return taskDeleted;
 }
-
+const removeByRoomId = async (roomId) => {
+  const taskDeleted = await tasks.destroy({
+    where: {
+      roomId,
+    },
+  })
+  return taskDeleted;
+}
 module.exports = {
   getAll,
   create,
@@ -158,5 +173,6 @@ module.exports = {
   getByUser,
   getByRoomId,
   edit,
-  remove
+  remove,
+  removeByRoomId
 }

@@ -80,7 +80,7 @@ const create = async (data, taskId, userId) => {
 }
 
 const edit = async (id, data, userRol) => {
-  let res = null 
+  let res = null
   const { taskId, createdAt, updatedAt, ...restofproperties } = data
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol || //admin
     "5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//tecnicos y programadores

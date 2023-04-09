@@ -1,5 +1,4 @@
 const taskController = require("./tasks.controllers");
-
 const getAll = (req, res) => {
   taskController
     .getAll()
@@ -50,22 +49,22 @@ const getByRoomId = (req, res) => {
 const create = (req, res) => {
   const data = req.body;
   if (!data) {
-    return res.status(400).json({ message: "Missing Data"});
+    return res.status(400).json({ message: "Missing Data" });
   } else if (
-    !data.description||
-    !data.executionDate||
+    !data.description ||
+    !data.executionDate ||
     !data.roomId
   ) {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        "description":"description",
-        "executionDate":"executionDate",
-        "roomId":"roomId"
+        "description": "description",
+        "executionDate": "executionDate",
+        "roomId": "roomId"
       },
     });
   } else {
-    taskController.create(data,req.user.id,req.params.roomId)
+    taskController.create(data, req.user.id, req.params.roomId)
       .then((response) => {
         res.status(201).json({
           message: `task created succesfully with id: ${response.id}`,
@@ -73,8 +72,8 @@ const create = (req, res) => {
         });
       })
       .catch(err => {
-        res.status(400).json({message: err.errors[0].message})
-      }) 
+        res.status(400).json({ message: err.errors[0].message })
+      })
   }
 }
 
@@ -84,7 +83,7 @@ const edit = (req, res) => {
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {
-    taskController.edit(id, data,req.user.id, req.user.rol)
+    taskController.edit(id, data, req.user.id, req.user.rol)
       .then((response) => {
         res.status(200).json({
           message: 'task edited succesfully',
@@ -92,7 +91,7 @@ const edit = (req, res) => {
         })
       })
       .catch((err) => {
-        res.status(400).json({message: err.errors[0].message})
+        res.status(400).json({ message: err.errors[0].message })
       })
   }
 }
@@ -101,21 +100,36 @@ const remove = (req, res) => {
   const id = req.params.id;
   taskController.remove(id)
     .then((response) => {
-      if(response){
-        res.status(204).json({message:response})
-      }else{
+      if (response) {
+        res.status(204).json({ message: response })
+      } else {
         res.status(400).json({
           message: 'Invalid ID'
         })
       }
     })
 }
+const removeByRoomId = (req, res) => {
+  const id = req.params.id
+  taskController.removeByRoomId(id)
+    .then((response) => {
+      if (response) {
+        res.status(204).json({ message: response })
+      } else {
+        res.status(400).json({
+          message: 'Invalid ID'
+        })
+      }
+    })
+}
+
 module.exports = {
   getAll,
   create,
   getById,
   getByUser,
   getByRoomId,
+  edit,
   remove,
-  edit
+  removeByRoomId
 }

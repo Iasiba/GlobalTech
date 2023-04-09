@@ -170,6 +170,14 @@ const remove = async (id) => {
   });
   return materialDeleted;
 }
+const removeByInventoryId = async (inventoryId) => {
+  const materialDeleted = await Materials.destroy({
+    where: {
+      inventoryId,
+    },
+  });
+  return materialDeleted;
+}
 
 module.exports = {
   getAll,
@@ -180,5 +188,6 @@ module.exports = {
   getByUserId,
   getByProjectId,
   edit,
-  remove
+  remove,
+  removeByInventoryId
 }

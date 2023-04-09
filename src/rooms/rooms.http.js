@@ -1,4 +1,5 @@
 const roomController = require("./rooms.controllers");
+const taskController = require("../tasks/tasks.http")
 
 const getAll = (req, res) => {
   roomController
@@ -10,7 +11,6 @@ const getAll = (req, res) => {
       res.status(400).json(err);
     });
 }
-
 const getById = (req, res) => {
   const id = req.params.id
   roomController
@@ -59,7 +59,6 @@ const create = (req, res) => {
       }) 
   }
 }
-
 const edit = (req, res) => {
   const id = req.params.id;
   const data = req.body;
@@ -78,7 +77,6 @@ const edit = (req, res) => {
       })
   }
 }
-
 const remove = (req, res) => {
   const id = req.params.id;
   roomController.remove(id)
