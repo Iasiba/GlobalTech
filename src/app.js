@@ -67,6 +67,9 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors())//acceso a todo el mundo
+app.use('/public', express.static(`C:/Users/carlo/Documents/backend/GlobalTech/media`));
+//`C:/Users/carlo/Documents/backend/GlobalTech/media`
+
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/roles", rolesRouter)
 app.use("/api/v1/users", userRouter)

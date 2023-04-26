@@ -11,7 +11,14 @@ router.route('/') // /api/v1/backups/
     .get(passport.authenticate('jwt', { session: false }), roleProgrammerMiddleware, backupServices.getAll)
     //.post(passport.authenticate('jwt', { session: false }),roleProgrammerMiddleware,backupServices.create)
     .post(passport.authenticate('jwt', { session: false }), roleProgrammerMiddleware, backupServices.create)
-/*
+
+
+    router.route('/files') // /api/v1/backups/files
+    .get(/*passport.authenticate('jwt', { session: false }), roleProgrammerMiddleware, */backupServices.files)
+
+
+
+    /*
 .post(
     passport.authenticate('jwt', { session: false }), 
     upload().single('profile_img'), 

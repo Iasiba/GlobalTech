@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const uuid = require("uuid");
 
 const Backup = require("../models/backups.models");
@@ -48,17 +50,17 @@ const getByProjectId = async (projectId) => {
   return res;
 };
 
-const create = async (data,userId) => {
-  console.log(data,'datosss',userId)
+const create = async (data, userId) => {
+  console.log(data, 'datosss', userId)
   const newBackup = await Backup.create({
     id: uuid.v4(),
-    software:data.software,
-    version:data.version||"",
-    name:data.name,
-    backup:data.backup||"https://www.youtube.com/watch?v=DIexYmyB1zk",//https://www.youtube.com/watch?v=DIexYmyB1zk
-    userId:userId,
-    projectId:data.projectId,
-    date:data.date
+    software: data.software,
+    version: data.version || "",
+    name: data.name,
+    backup: data.backup || "https://www.youtube.com/watch?v=DIexYmyB1zk",//https://www.youtube.com/watch?v=DIexYmyB1zk
+    userId: userId,
+    projectId: data.projectId,
+    date: data.date
   })
   return newBackup;
 };
@@ -67,12 +69,12 @@ const edit = async (id, data, userRol) => {
   let res = null
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await Backup.update(
-      {...data},
+      { ...data },
       { where: { id: id } }
     )
   } else {
     res = await Backup.update(
-      {...data},
+      { ...data },
       { where: { id: id }, }
     )
   }
@@ -89,7 +91,6 @@ const remove = async (id) => {
 };
 
 const upload = async (backupId, backupPath) => {
-  console.log(backupId,backupPath,'xxxxxxxxxxxxxxx')
   const data = await Backup.update(
     {
       backup: backupPath,
@@ -100,6 +101,23 @@ const upload = async (backupId, backupPath) => {
   );
   return data;
 }
+
+const files = async () => {
+  fs.readFile('./io.jpg',function(err,content){
+    //console.log(content)
+    return content
+  })
+  /*await fs.readdir('./', function (err, archivos) {
+    if (err) {
+      //onError(err);
+      return err
+    }
+    console.log(archivos);
+    const aux = archivos.slice(0)
+    return aux
+  });*/
+
+}
 module.exports = {
   getAll,
   create,
@@ -107,5 +125,6 @@ module.exports = {
   getByProjectId,
   edit,
   remove,
-  upload
+  upload,
+  files
 }
