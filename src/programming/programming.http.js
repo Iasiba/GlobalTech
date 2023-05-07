@@ -53,6 +53,42 @@ const create = (req, res) => {
       }) 
   }
 };
+const uploadGuide = (req, res) => {
+  const guideId = req.params.id;
+  const guidePath = 'http://'+req.hostname + ':8000' + '/public/chapters/' + req.file.filename
+ 
+  programmingControllers.uploadGuide(guideId, guidePath)
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(400).json({ message: err.errors[0].message })
+    })
+};
+const uploadTutorial = (req, res) => {
+  const guideId = req.params.id;
+  const guidePath = 'http://'+req.hostname + ':8000' + '/public/chapters/' + req.file.filename
+ 
+  programmingControllers.uploadTutorial(guideId, guidePath)
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(400).json({ message: err.errors[0].message })
+    })
+};
+const uploadDatasheet = (req, res) => {
+  const guideId = req.params.id;
+  const guidePath = 'http://'+req.hostname + ':8000' + '/public/chapters/' + req.file.filename
+ 
+  programmingControllers.uploadDatasheet(guideId, guidePath)
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      res.status(400).json({ message: err.errors[0].message })
+    })
+};
 
 const remove = (req, res) => {
   const id = req.params.id;
@@ -90,6 +126,9 @@ const edit = (req, res) => {
 module.exports = {
   getAll,
   create,
+  uploadGuide,
+  uploadDatasheet,
+  uploadTutorial,
   getById,
   remove,
   edit

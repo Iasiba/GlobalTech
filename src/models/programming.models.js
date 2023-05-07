@@ -12,25 +12,22 @@ const Programming = db.define('programming', {
         type: DataTypes.STRING
     },
     datasheet: {
-        allowNull: false,
+        //allowNull: false,
+        defaultValue:'https://www.youtube.com/',
         type: DataTypes.STRING,
-        validate: {
-            isUrl: true,
-        }
+        //validate: { isUrl: true }
     },
     guide: {
-        allowNull: false,
+        //allowNull: false,
+        defaultValue:'https://www.youtube.com/',
         type: DataTypes.STRING,
-        validate: {
-            isUrl: true,
-        }
+        //validate: { isUrl: true }
     },
     tutorial: {
-        allowNull: false,
+        //allowNull: false,
         type: DataTypes.STRING,
-        validate: {
-            isUrl: true,
-        }
+        defaultValue:'https://www.youtube.com/',
+        //validate: { isUrl: true }
     },
     userId: {
         type: DataTypes.UUID,
