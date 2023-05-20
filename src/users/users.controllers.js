@@ -7,8 +7,8 @@ const Projects = require("../models/projects.model");
 const Tasks = require("../models/tasks.model")
 const TaskList = require("../models/task.list.model")
 
-const getAllUsers = async() => {
-  const res= await Users.findAll({
+const getAllUsers = async () => {
+  const res = await Users.findAll({
     include: [
       {
         model: Roles
@@ -26,8 +26,8 @@ const getAllUsers = async() => {
         model: TaskList
       }
     ],
-    attributes:{
-      exclude:["password","createdAt","UpdatedAt","roleId"]
+    attributes: {
+      exclude: ["password", "createdAt", "UpdatedAt", "roleId"]
     }
   })
   //? select * from users;
@@ -63,22 +63,40 @@ const getUserById = async (id) => {
 }
 
 const createUser = async (data) => {
-  console.log(data,"entro a crear users")
+  console.log(data, "entro a crear users")
   const newUser = await Users.create({
     id: uuid.v4(),
     firstName: data.first_name,
     email: data.email,
     password: hashPassword(data.password),
     roleId: data.roleId,
-    lastName: data.last_name||'',
-    gender: data.gender||'',
-    phone: data.phone||'',
-    birthdayDate: data.birthday_date||"2000/01/01",
-    dni: data.dni||'',
-    address: data.address||'',
-    profileImage: data.profile_image ||'https://www.youtube.com/watch?v=hnCZmEOUvcY',
+    lastName: data.last_name || '',
+    gender: data.gender || '',
+    phone: data.phone || '',
+    birthdayDate: data.birthday_date || "2000/01/01",
+    dni: data.dni || '',
+    address: data.address || '',
+    profileImage: data.profile_image || 'https://www.youtube.com/watch?v=hnCZmEOUvcY',
     status: "active",
     verified: false,
+    watchActivities: data.watchActivities,
+    watchDocumentation: data.watchDocumentation,
+    watchHome: data.watchHome,
+    watchMyHome: data.watchMyHome,
+    watchProjects: data.watchProjects,
+    watchTasks: data.watchTasks,
+    watchUsers: data.watchUsers,
+    createOrEditActivities: data.createOrEditActivities,
+    createOrEditArea: data.createOrEditArea,
+    createOrEditAccount: data.createOrEditAccount,
+    createOrEditGuide: data.createOrEditGuide,
+    createOrEditInventary: data.createOrEditInventary,
+    createOrEditMaterial: data.createOrEditMaterial,
+    createOrEditNote: data.createOrEditNote,
+    createOrEditProject: data.createOrEditProject,
+    createOrEditBackup: data.createOrEditBackup,
+    createOrEditTask: data.createOrEditTask,
+    createOrEditUser: data.createOrEditUser
   });
   // const newUserWithSpreadOperator =  await Users.create({
   //   ...data,
@@ -101,8 +119,8 @@ const editUser = async (userId, data, userRol) => {
     )
   } else {
     res = await Users.update(
-      restOfProperties, 
-      { where: { id: userId },}
+      restOfProperties,
+      { where: { id: userId }, }
     )
   }
   return res

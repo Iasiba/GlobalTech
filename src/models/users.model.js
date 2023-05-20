@@ -82,6 +82,106 @@ const Users = db.define('users', {
     roleId: {
         allowNull: false,
         type: DataTypes.UUID
+    },
+    watchMyAccount:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:true
+    },
+    watchActivities:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    watchDocumentation:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    watchHome:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    watchInventaries:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    watchMyHome:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:true
+    },
+    watchProjects:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    watchTasks:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    watchUsers:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditActivities:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditArea:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditAccount:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditGuide:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditInventary:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditMaterial:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditNote:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:true
+    },
+    createOrEditProject:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditBackup:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditTask:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    createOrEditUser:{
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
     }
 })
 
