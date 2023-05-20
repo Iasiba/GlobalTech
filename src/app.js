@@ -87,7 +87,7 @@ app.use("/api/v1/backups", backupRouter)
 app.use("/api/v1/materialList", materialListRouter)
 app.use("/api/v1/taskList", taskListRouter)
 
-app.use("/api/v1/taskImages", taskImagesRouter)
+app.use("/api/v1/taskImages", taskImagesRouter)//falta
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);
