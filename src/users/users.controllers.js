@@ -111,6 +111,7 @@ const createUser = async (data) => {
 
 const editUser = async (userId, data, userRol) => {
   let res = null
+  console.log(data,'editar usuarios')
   const { id, password, verified, roleId, ...restOfProperties } = data;
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//admin
     res = await Users.update(

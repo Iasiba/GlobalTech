@@ -94,8 +94,6 @@ const edit = (req, res) => {
 
 const editMyUser = (req, res) => {
   const data = req.body;
-  console.log(req.user)
-  console.log(data)
   if (!Object.keys(data).length) {
     return res.status(400).json({ message: "Missing Data" });
   } else {

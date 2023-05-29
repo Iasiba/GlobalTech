@@ -40,6 +40,11 @@ const Users = db.define('users', {
     dni: {
         type: DataTypes.STRING
     },
+    country: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        defaultValue: "Mexico"
+    },
     address: {
         type: DataTypes.STRING
     },
@@ -83,105 +88,105 @@ const Users = db.define('users', {
         allowNull: false,
         type: DataTypes.UUID
     },
-    watchMyAccount:{
+    watchMyAccount: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:true
+        defaultValue: true
     },
-    watchActivities:{
+    watchActivities: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    watchDocumentation:{
+    watchDocumentation: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    watchHome:{
+    watchHome: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    watchInventaries:{
+    watchInventaries: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    watchMyHome:{
+    watchMyHome: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:true
+        defaultValue: true
     },
-    watchProjects:{
+    watchProjects: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    watchTasks:{
+    watchTasks: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    watchUsers:{
+    watchUsers: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditActivities:{
+    createOrEditActivities: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditArea:{
+    createOrEditArea: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditAccount:{
+    createOrEditAccount: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditGuide:{
+    createOrEditGuide: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditInventary:{
+    createOrEditInventary: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditMaterial:{
+    createOrEditMaterial: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditNote:{
+    createOrEditNote: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:true
+        defaultValue: true
     },
-    createOrEditProject:{
+    createOrEditProject: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditBackup:{
+    createOrEditBackup: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditTask:{
+    createOrEditTask: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     },
-    createOrEditUser:{
+    createOrEditUser: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue:false
+        defaultValue: false
     }
 })
 

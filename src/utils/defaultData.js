@@ -10,11 +10,11 @@ const Roles = require("../models/roles.model")
 const Projects = require("../models/projects.model")
 const Accounts = require("../models/accounts.model")
 const Inventories = require("../models/inventories.model")
-const Rooms =require("../models/rooms.model")
+const Rooms = require("../models/rooms.model")
 const Tasks = require("../models/tasks.model")
 const Activities = require("../models/activities.model")
 const Material = require("../models/materials.model")
-const Programming=require("../models/programming.models")
+const Programming = require("../models/programming.models")
 const Note = require("../models/notes.models")
 const Backup = require("../models/backups.models")
 
@@ -55,6 +55,7 @@ const generateData = async () => {
       watchActivities: true,
       watchDocumentation: true,
       watchHome: true,
+      watchInventaries: true,
       watchMyHome: true,
       watchProjects: true,
       watchTasks: true,
@@ -125,7 +126,7 @@ const generateData = async () => {
     {
       id: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
-      name:"xxx",
+      name: "xxx",
       address: "el infierno",
       coordinates: "666",
       reference: "el crujir de dientes colonia el diablito",
@@ -136,7 +137,7 @@ const generateData = async () => {
     {
       id: "12a1166e-6945-45b6-85ef-aca1134e6776",
       userId: "2fcd766a-6568-4458-8fb1-21d2bda162c6",
-      name:"yyy",
+      name: "yyy",
       address: "el infierno",
       coordinates: "666",
       reference: "el crujir de dientes colonia el diablito",
@@ -147,7 +148,7 @@ const generateData = async () => {
     {
       id: "b880fd77-6b3c-4b4f-84c7-bc5083d0959a",
       userId: "0ccef760-ca64-4ce7-947d-2c144f96b671",
-      name:"zzz",
+      name: "zzz",
       address: "el infierno",
       coordinates: "666",
       reference: "el crujir de dientes colonia el diablito",
@@ -159,7 +160,7 @@ const generateData = async () => {
   await Accounts.bulkCreate([
     {
       id: "2e1c6462-f64c-4b84-806f-8e74a7376384",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
       accountName: "sonos",
       owner: "666",
@@ -169,7 +170,7 @@ const generateData = async () => {
     },
     {
       id: "75200366-d396-454d-8f07-3b50aa9b51e1",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
       accountName: "sonos",
       owner: "666",
@@ -179,7 +180,7 @@ const generateData = async () => {
     },
     {
       id: "b8422f4c-a13f-4983-bff1-f5503d23f8e6",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       projectId: "b880fd77-6b3c-4b4f-84c7-bc5083d0959a",
       accountName: "sonos",
       owner: "666",
@@ -237,39 +238,39 @@ const generateData = async () => {
     }
   ], { validate: true })
   await Tasks.bulkCreate([
-    { 
-      id:"e889af51-ef94-46ea-b8f5-b681cabb9d1c",
+    {
+      id: "e889af51-ef94-46ea-b8f5-b681cabb9d1c",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "description",
       roomId: "cbdfc4c8-5a38-4b94-851a-a4ca2ce7fd9d",
       executionDate: "2022/02/03"
-     },
-     { 
-      id:"f051a92e-b74c-4d6d-b66e-8e0ab7e91d2e",
+    },
+    {
+      id: "f051a92e-b74c-4d6d-b66e-8e0ab7e91d2e",
       userId: "2fcd766a-6568-4458-8fb1-21d2bda162c6",
       description: "description",
       roomId: "3189984c-0fd0-40cd-8516-30079a845b8e",
       executionDate: "2022/02/03"
-     },
-     { 
-      id:"8c53f0b5-49ad-45e7-9baf-578a285ad122",
+    },
+    {
+      id: "8c53f0b5-49ad-45e7-9baf-578a285ad122",
       userId: "0ccef760-ca64-4ce7-947d-2c144f96b671",
       description: "description",
       roomId: "c4e2251e-a640-4126-be44-c44196b9f10d",
       executionDate: "2022/02/03"
-     },
-     { 
-      id:"299b2cad-56bb-42e7-8510-053dc84daecc",
+    },
+    {
+      id: "299b2cad-56bb-42e7-8510-053dc84daecc",
       userId: "a1318da8-997f-4960-82ed-15aa8a5ffc9a",
       description: "description",
       roomId: "f0babb16-4e3f-4733-9102-abe73cd6161e",
       executionDate: "2022/02/03"
-     }
+    }
   ], { validate: true })
   await Activities.bulkCreate([
     {
       id: "ce821d18-dab1-4c33-bc98-6c681ba327b4",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -279,7 +280,7 @@ const generateData = async () => {
     },
     {
       id: "afa125b6-db8e-4abd-9e3e-28d54142b38f",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -289,7 +290,7 @@ const generateData = async () => {
     },
     {
       id: "13599ff3-25c2-4428-a2c2-9e4894cfd6af",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -299,7 +300,7 @@ const generateData = async () => {
     },
     {
       id: "44481f9b-32f2-4dd3-8fc7-801e5f00e71d",
-      userId:"74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
+      userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       description: "textsss",
       isfinished: false,
       iscanceled: false,
@@ -319,7 +320,7 @@ const generateData = async () => {
     {
       id: "6ea3be59-99a4-4136-9047-9c7f0825518e",
       name: "TEXT",
-      model:"xxx",
+      model: "xxx",
       amount: 555,
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
@@ -332,7 +333,7 @@ const generateData = async () => {
       id: "7909f627-f871-4b8f-9c8c-9ec27abb5f63",
       name: "TEXT",
       amount: 555,
-      model:"xxx",
+      model: "xxx",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
       projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
@@ -344,7 +345,7 @@ const generateData = async () => {
       id: "001285b2-0514-4a41-b258-0edf3900c1c5",
       name: "TEXT",
       amount: 555,
-      model:"xxx",
+      model: "xxx",
       userId: "74cd6011-7e76-4d6d-b25b-1d6e4182ec2f",
       inventoryId: "cb356369-10a7-45f0-8a82-5a041df09c06",
       //projectId: "4bd20dfc-17bd-4557-99d2-adc0ca7da2c5",
