@@ -3,6 +3,7 @@ const uuid = require("uuid");
 const rooms = require("../models/rooms.model");
 const project = require("../models/projects.model");
 const Tasks = require("../models/tasks.model");
+const Materials = require("../models/materials.model");
 
 const getAll = async () => {
   const res = await rooms.findAll({
@@ -12,6 +13,9 @@ const getAll = async () => {
       },
       {
         model: Tasks
+      },
+      {
+        model: Materials
       }
     ],
   })
@@ -26,6 +30,9 @@ const getById = async (id) => {
       },
       {
         model: Tasks
+      },
+      {
+        model: Materials
       }
     ],
   });
@@ -40,6 +47,9 @@ const getByProjectId = async (projectId) => {
       },
       {
         model: Tasks
+      },
+      {
+        model: Materials
       }
     ]
   })

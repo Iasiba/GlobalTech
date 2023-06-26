@@ -30,7 +30,7 @@ const register = (req, res) => {
   if (!data) {
     return res.status(400).json({ message: "Missing Data" });
   } else if (
-    !data.first_name ||
+    !data.firstName ||
     !data.email ||
     !data.password ||
     !data.roleId
@@ -38,7 +38,7 @@ const register = (req, res) => {
     return res.status(400).json({
       message: "All fields must be completed",
       fields: {
-        "first_name": "string",
+        "firstName": "string",
         "email": "examl@examle.com",
         "password": "1234",
         "roleId": "roleId",

@@ -23,7 +23,8 @@ const getById = (req, res) => {
     });
 }
 const getByUserId = (req, res) => {
-  const id = req.user.id;
+  console.log(req.user)
+  const id = req.params.userId ? req.params.userId : req.user.id;//tareas tecnicos (User tasks) : tareas asignadas(MyHome tasks) 
   taskListControllers
     .getByUserId(id)
     .then((response) => {

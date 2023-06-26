@@ -4,7 +4,8 @@ const Projects = require("../models/projects.model");
 const Users = require ("../models/users.model")
 const Rooms = require("../models/rooms.model")
 const Accounts = require("../models/accounts.model")
-
+const Backup = require("../models/backups.models")
+const Materials = require("../models/materials.model")
 const getAll = async () => {
   const res = await Projects.findAll({
     include: [
@@ -17,6 +18,12 @@ const getAll = async () => {
       },
       {
         model:Accounts
+      },
+      {
+        model: Backup
+      },
+      {
+        model: Materials
       }
     ],
   })
@@ -36,6 +43,12 @@ const getById = async (id) => {
       },
       {
         model:Accounts
+      },
+      {
+        model: Backup
+      },
+      {
+        model: Materials
       }
     ],
   });

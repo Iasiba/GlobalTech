@@ -11,5 +11,7 @@ router.route('/:id')
     .get(passport.authenticate('jwt', { session: false }), taskListServices.getById)
     .put(passport.authenticate('jwt', { session: false }), taskListServices.edit)
     .delete(passport.authenticate('jwt', { session: false }), taskListServices.remove)
+router.route('/me/:userId')
+    .get(passport.authenticate('jwt', { session: false }), taskListServices.getByUserId)
 
 exports.router = router
