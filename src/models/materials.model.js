@@ -26,6 +26,10 @@ const Material = db.define('materials', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    color: {
+        type: DataTypes.STRING,
+        defaultValue:""
+    },
     amount: {
         type: DataTypes.INTEGER,
         defaultValue: 0,

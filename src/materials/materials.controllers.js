@@ -19,7 +19,7 @@ const getAll = async () => {
         model: Inventories
       },
       {
-        model:Rooms
+        model: Rooms
       }
     ],
   })
@@ -39,7 +39,7 @@ const getPendigs = async () => {
         model: Inventories
       },
       {
-        model:Rooms
+        model: Rooms
       }
     ],
   })
@@ -59,9 +59,9 @@ const getById = async (id) => {
         model: Inventories
       },
       {
-        model:Rooms
+        model: Rooms
       }
-      
+
     ],
   });
   return res;
@@ -80,7 +80,7 @@ const getByUserId = async (userId) => {
         model: Inventories
       },
       {
-        model:Rooms
+        model: Rooms
       }
     ]
   });
@@ -118,15 +118,14 @@ const getByProjectId = async (projectId) => {
         model: Inventories
       },
       {
-        model:Rooms
+        model: Rooms
       }
     ]
   });
   return res;
 }
-
 const create = async (data, inventoryId, userId) => {
-  console.log(data,inventoryId)
+  console.log(data, inventoryId)
   const newMaterial = await Materials.create({
     id: uuid.v4(),
     onHold: data.onHold || false,
@@ -135,7 +134,8 @@ const create = async (data, inventoryId, userId) => {
     damaged: data.damaged || false,
     delivered: data.delivered || false,
     name: data.name,
-    model:data.model,
+    model: data.model,
+    color: data.color,
     amount: data.amount,
     userId: userId,
     inventoryId: inventoryId,
@@ -161,7 +161,6 @@ const edit = async (materialId, data, userRol) => {
   }
   return res
 }
-
 const remove = async (id) => {
   const materialDeleted = await Materials.destroy({
     where: {
