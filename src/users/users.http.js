@@ -137,9 +137,7 @@ const postProfileImg = (req, res) => {
   const userId = req.user.id;
   //mi-sitio.com/api/v1/users/me/profile-img
   //localhost:8000/api/v1/users/me/profile-img
-
-  const imgPath = req.hostname + ':8000' + '/api/v1/uploads/' + req.file.filename
-
+  const imgPath = 'http://' + req.hostname + ':8000' + '/public/chapters/' + req.file.filename
   userControllers.editProfileImg(userId, imgPath)
     .then(response => {
       res.status(200).json(response)

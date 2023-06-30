@@ -19,6 +19,9 @@ router.route('/me')
     .put(passport.authenticate('jwt', { session: false }), userServices.editMyUser)
     .delete(passport.authenticate('jwt', { session: false }), userServices.removeMyUser)
 
+router.route('/me/profileImage')
+    
+
 router.route('/me/tasks')
     .get(passport.authenticate('jwt', { session: false }), taskServices.getByUser)
 
