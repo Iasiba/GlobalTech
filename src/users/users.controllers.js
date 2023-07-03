@@ -150,7 +150,7 @@ const createUser = async (data) => {
     birthdayDate: data.birthday_date || "2000/01/01",
     dni: data.dni || '',
     address: data.address || '',
-    profileImage: data.profile_image || 'https://www.youtube.com/watch?v=hnCZmEOUvcY',
+    profileImage: data.profile_image || 'http://192.168.0.253:8000/public/chapters/fondo.jpg',
     status: "active",
     verified: false,
     watchActivities: data.watchActivities,

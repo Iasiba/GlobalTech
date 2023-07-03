@@ -20,6 +20,9 @@ const Activities = db.define('activities', {
         allowNull: false,
         type: DataTypes.STRING
     },
+    observation: {
+        type: DataTypes.STRING
+    },
     createdAt: {
         type: DataTypes.DATEONLY
     },

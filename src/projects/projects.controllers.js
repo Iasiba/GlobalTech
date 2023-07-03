@@ -6,6 +6,8 @@ const Rooms = require("../models/rooms.model")
 const Accounts = require("../models/accounts.model")
 const Backup = require("../models/backups.models")
 const Materials = require("../models/materials.model")
+const Task = require("../models/tasks.model")
+const Activities = require("../models/activities.model")
 const getAll = async () => {
   const res = await Projects.findAll({
     include: [
@@ -15,6 +17,7 @@ const getAll = async () => {
       },
       {
         model: Rooms
+        , include: [{ model: Task , include: Activities }]
       },
       {
         model:Accounts

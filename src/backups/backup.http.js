@@ -75,7 +75,7 @@ const upload = (req, res) => {
   //console.log(backupId, 'backupid')
   //const backupPath = req.hostname + ':8000' + '/api/v1/uploads/' + req.file.filename
   console.log(req.hostname, "hostnamesss")
-  const backupPath = req.hostname + ':8000' + /*'/api/v1/uploads/'*/'/public/chapters/' + req.file.filename
+  const backupPath = 'http://' + req.hostname + ':8000' + /*'/api/v1/uploads/'*/'/public/chapters/' + req.file.filename
   backupControllers.upload(backupId, backupPath)
     .then(response => {
       res.status(200).json(response)
@@ -124,16 +124,16 @@ const files = (req, res) => {
     //if (err) throw err;
     //console.log(`stats: ${JSON.stringify(stats)}`);
   })*/
-  fs.readFile('./io.txt',function (err, content) {
+  fs.readFile('./io.txt', function (err, content) {
     console.log(content)
     //file=content
     res.end(content)
     //return aux//res.end(aux)//return content//
   })
- /*res.status(200).json({
-    message: 'backup',
-    backup: { file }
-  })*/
+  /*res.status(200).json({
+     message: 'backup',
+     backup: { file }
+   })*/
   /*backupControllers.files()
     .then((response) => {
       console.log(response)

@@ -73,6 +73,7 @@ const create = async (data, taskId, userId) => {
   const newActivity = await Activities.create({
     id: uuid.v4(),
     description: data.description,
+    observation: data.observation,
     taskId: taskId,
     userId: userId
   })

@@ -39,10 +39,11 @@ db.authenticate()
   .catch(err => console.log(err))
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('entro en produccion')
   db.sync()
     .then(() => {
       console.log('Database synced')
-      defaultData()
+      //defaultData()
     })
     .catch(err => console.log(err))
 } else {
