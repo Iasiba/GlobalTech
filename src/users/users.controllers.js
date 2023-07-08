@@ -136,7 +136,7 @@ const getUserWithRole = async (userId) => {
   return data;
 }
 
-const createUser = async (data) => {
+const createUser = async (Hostname, data) => {
   console.log(data, "entro a crear users")
   const newUser = await Users.create({
     id: uuid.v4(),
@@ -150,7 +150,7 @@ const createUser = async (data) => {
     birthdayDate: data.birthday_date || "2000/01/01",
     dni: data.dni || '',
     address: data.address || '',
-    profileImage: data.profile_image || 'http://192.168.0.253:8000/public/chapters/fondo.jpg',
+    profileImage: data.profile_image || `http://${Hostname + ':' + process.env.PORT}/public/chapters/fondo.jpg`,
     status: "active",
     verified: false,
     watchActivities: data.watchActivities,

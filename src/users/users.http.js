@@ -46,7 +46,7 @@ const register = (req, res) => {
     });
   } else {
 
-    userControllers.createUser(data)
+    userControllers.createUser(req.hostname,data)
       .then((response) => {
         res.status(201).json({
           message: `User created succesfully with id: ${response.id}`,

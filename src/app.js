@@ -4,6 +4,10 @@ const express = require("express")
 const passport = require("passport")
 require("./middleware/auth.middleware")(passport)
 const path = require('path')
+//
+const https = require('https');
+const fs = require('fs');
+//
 //*Archivos de rutas
 const authRouter = require("./auth/auth.router").router
 const rolesRouter = require("./Roles/roles.router").router
@@ -47,10 +51,10 @@ if (process.env.NODE_ENV === 'production') {
     })
     .catch(err => console.log(err))
 } else {
-  db.sync({ force: true })
+  db.sync(/*{ force: true }*/)
     .then(() => {
       console.log('Database synced')
-      defaultData()
+      /*defaultData()*/
     })
     .catch(err => console.log(err))
 }
@@ -89,10 +93,19 @@ app.use("/api/v1/materialList", materialListRouter)
 app.use("/api/v1/taskList", taskListRouter)
 
 app.use("/api/v1/taskImages", taskImagesRouter)//falta
+/*
+const options = {
+  key: fs.readFileSync('ruta/a/la/clave/ssl.key'),
+  cert: fs.readFileSync('ruta/al/certificado/ssl.crt'),
+};
+*/
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);
 });
+/*https.createServer(options, app).listen(PORT, () => {
+  console.log(`Servidor iniciado en el puerto ${PORT}`);
+});*/
 
 exports.default = app
 exports.app = app
