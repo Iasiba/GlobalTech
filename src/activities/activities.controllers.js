@@ -86,7 +86,7 @@ const edit = async (id, data, userRol) => {
   if ("5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol || //admin
     "5ee551ed-7bf4-44b0-aeb5-daaa824b9473" === userRol) {//tecnicos y programadores
     res = await Activities.update(
-      { taskId,...restofproperties },
+      { taskId, ...restofproperties },
       { where: { id: id } }
     )
   }
@@ -110,6 +110,18 @@ const removeByTaskId = async (taskId) => {
   })
   return activityDeleted;
 }
+const upload = async (activityId, signature, receiver) => {
+  const data = await Activities.update(
+    {
+      signature,
+      receiver
+    },
+    {
+      where: { id: activityId },
+    }
+  );
+  return data;
+}
 module.exports = {
   getAll,
   create,
@@ -118,5 +130,6 @@ module.exports = {
   getByUserId,
   edit,
   remove,
-  removeByTaskId
+  removeByTaskId,
+  upload
 }

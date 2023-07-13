@@ -12,6 +12,8 @@ const upload=()=>{
     })
     return multer({storage}) 
 }
+
+exports.upload = upload
 /*
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -23,5 +25,3 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage})
 */
-
-exports.upload = upload

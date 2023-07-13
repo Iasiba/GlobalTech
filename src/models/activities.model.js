@@ -23,6 +23,12 @@ const Activities = db.define('activities', {
     observation: {
         type: DataTypes.STRING
     },
+    signature: {
+        type: DataTypes.STRING
+    },
+    receiver: {
+        type: DataTypes.STRING
+    },
     createdAt: {
         type: DataTypes.DATEONLY
     },
